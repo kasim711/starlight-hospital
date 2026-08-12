@@ -3,6 +3,7 @@ import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import db, { initDb } from './db.js';
+import { seedInitialData } from './seed.js';
 
 import authRoutes from './routes/auth.js';
 import articleRoutes from './routes/articles.js';
@@ -23,8 +24,9 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const INITIAL_PORT = process.env.PORT ? parseInt(process.env.PORT) : 5050;
 
-// Initialize Database Schemas
+// Initialize Database Schemas and Seed Production Data
 await initDb();
+await seedInitialData();
 
 // Middleware
 app.use(cors());

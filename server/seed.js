@@ -1,7 +1,7 @@
 import db, { initDb } from './db.js';
 import bcrypt from 'bcryptjs';
 
-async function seed() {
+export async function seedInitialData() {
   console.log('Initializing SQLite database schema...');
   await initDb();
 
@@ -55,7 +55,7 @@ async function seed() {
 
   // 3. Seed 6 Launch Health Articles (Linked via category_id & author_id)
   const articlesCount = await db.get('SELECT count(*) as count FROM articles');
-  if (articlesCount.count === 0) {
+  if (articlesCount.count === 0 && mainAdmin) {
     const articles = [
       {
         title: 'When Should You See a Doctor for a Persistent Health Concern?',
@@ -427,6 +427,6 @@ async function seed() {
   console.log('Seeding completed cleanly!');
 }
 
-seed().catch(err => {
-  console.error('Seeding error:', err);
-});
+if (process.argv[1] && process.argv[1].endsWith('seed.js')) {
+  seedInitialData().catch(err => console.error('Seeding error:', err));
+}
