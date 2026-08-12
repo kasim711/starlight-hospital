@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-slate-50 text-slate-850 font-sans antialiased selection:bg-teal-500 selection:text-white;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans tracking-tight text-navy-500 font-bold;
+  }
+}
+
+/* Custom Healthcare UI Utilities */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, rgba(18, 59, 93, 0.96) 0%, rgba(22, 138, 138, 0.90) 100%);
+}
+
+.subtle-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(18, 59, 93, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(18, 59, 93, 0.03) 1px, transparent 1px);
+}
+
+.prose-article h2 {
+  @apply text-2xl font-bold text-navy-500 mt-8 mb-4 border-b border-slate-200 pb-2;
+}
+
+.prose-article h3 {
+  @apply text-xl font-semibold text-teal-600 mt-6 mb-3;
+}
+
+.prose-article p {
+  @apply text-slate-700 leading-relaxed mb-4 text-base md:text-lg;
+}
+
+.prose-article ul {
+  @apply list-disc list-inside space-y-2 mb-6 text-slate-700 text-base md:text-lg pl-2;
+}
+
+.prose-article ol {
+  @apply list-decimal list-inside space-y-2 mb-6 text-slate-700 text-base md:text-lg pl-2;
+}
+
+.prose-article strong {
+  @apply text-navy-500 font-semibold;
+}
+
+.prose-article blockquote {
+  @apply border-l-4 border-teal-500 bg-teal-50/50 p-4 rounded-r-lg italic text-slate-700 my-6;
+}

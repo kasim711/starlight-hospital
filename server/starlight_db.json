@@ -1,0 +1,238 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Starlight Administrator",
+      "email": "admin@starlight.com",
+      "password_hash": "$2a$10$Ce2A9O7foG.nyp7TzvQ52.TjvVaDrpEOZab6LeZWG/3x/OjuXeX/K",
+      "role": "Super Admin",
+      "created_at": "2026-08-12T18:22:15.158Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "General Health",
+      "slug": "general-health",
+      "created_at": "2026-08-12T18:22:15.284Z"
+    },
+    {
+      "id": 2,
+      "name": "Women's Health",
+      "slug": "womens-health",
+      "created_at": "2026-08-12T18:22:15.285Z"
+    },
+    {
+      "id": 3,
+      "name": "Pregnancy & Maternal Health",
+      "slug": "pregnancy-maternal-health",
+      "created_at": "2026-08-12T18:22:15.285Z"
+    },
+    {
+      "id": 4,
+      "name": "Child Health",
+      "slug": "child-health",
+      "created_at": "2026-08-12T18:22:15.286Z"
+    },
+    {
+      "id": 5,
+      "name": "Surgery & Recovery",
+      "slug": "surgery-recovery",
+      "created_at": "2026-08-12T18:22:15.286Z"
+    },
+    {
+      "id": 6,
+      "name": "Laboratory / Diagnostics",
+      "slug": "laboratory-diagnostics",
+      "created_at": "2026-08-12T18:22:15.287Z"
+    },
+    {
+      "id": 7,
+      "name": "Preventive Health",
+      "slug": "preventive-health",
+      "created_at": "2026-08-12T18:22:15.287Z"
+    },
+    {
+      "id": 8,
+      "name": "Hospital News & Announcements",
+      "slug": "hospital-news",
+      "created_at": "2026-08-12T18:22:15.288Z"
+    }
+  ],
+  "articles": [
+    {
+      "id": 1,
+      "title": "When Should You See a Doctor for a Persistent Health Concern?",
+      "slug": "when-should-you-see-a-doctor-persistent-health-concern",
+      "excerpt": "Understanding when everyday symptoms require clinical assessment is key to early diagnosis and effective healthcare management.",
+      "content": "\n<h2>Understanding Your Body's Warning Signals</h2>\n<p>Many common health concerns resolve naturally with rest and basic care. However, persistent symptoms often serve as important indicators that a professional medical evaluation is recommended.</p>\n\n<h3>Key Signs It Is Time to Consult a Doctor</h3>\n<p>At Starlight Hospital, we advise individuals and families to seek medical consultation if they experience any of the following:</p>\n<ul>\n  <li><strong>Symptoms lasting longer than usual:</strong> Fever, cough, or stomach discomfort that does not improve after a few days.</li>\n  <li><strong>Unexplained fatigue or weight changes:</strong> Sudden shifts in energy levels or weight without changes in diet or physical activity.</li>\n  <li><strong>Persistent or localized pain:</strong> Discomfort in the abdomen, chest, joints, or head that recurs or worsens over time.</li>\n  <li><strong>Changes in skin or bodily functions:</strong> New lumps, unusual skin changes, or alterations in digestion.</li>\n</ul>\n\n<h3>Why Early Consultation Matters</h3>\n<p>Seeking early clinical advice allows healthcare professionals to evaluate symptoms thoroughly, order necessary laboratory or diagnostic tests, and establish an appropriate care plan before minor issues develop into complex health conditions.</p>\n\n<p><em>Medical Disclaimer: The health information published on this website is provided for general educational purposes and is not a substitute for an examination, diagnosis, or personalised medical advice from a qualified healthcare professional.</em></p>\n        ",
+      "category": "General Health",
+      "featured_image": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800",
+      "image_alt": "Doctor consulting with a patient at Starlight Hospital",
+      "author": "Starlight Medical Team",
+      "status": "published",
+      "medical_review_status": "Reviewed",
+      "published_at": "2026-08-07T18:22:15.288Z",
+      "reading_time": 4,
+      "created_at": "2026-08-12T18:22:15.289Z",
+      "updated_at": "2026-08-12T18:22:15.289Z"
+    },
+    {
+      "id": 2,
+      "title": "Questions to Ask During a Medical Consultation",
+      "slug": "questions-to-ask-during-a-medical-consultation",
+      "excerpt": "Maximize the value of your outpatient visit by preparing clear questions about your symptoms, diagnosis, and recommended treatments.",
+      "content": "\n<h2>Making the Most of Your Consultation</h2>\n<p>A medical consultation is a collaborative conversation between you and your healthcare practitioner. Being prepared helps ensure all your concerns are addressed clearly and thoroughly.</p>\n\n<h3>Recommended Questions for Your Visit</h3>\n<ol>\n  <li><strong>About your diagnosis:</strong> What is the likely cause of my symptoms, and are further diagnostic tests needed?</li>\n  <li><strong>About your treatment plan:</strong> What are the recommended next steps, and how will this treatment help?</li>\n  <li><strong>About medications:</strong> How should I take this medication, and are there any specific instructions or side effects to watch for?</li>\n  <li><strong>About follow-up:</strong> When should I return for a follow-up assessment, or what signs indicate I should contact the hospital earlier?</li>\n</ol>\n\n<h3>What to Bring to Your Visit</h3>\n<p>To assist your clinician, please bring any previous lab results, a list of current medications, and notes detailing when your symptoms started.</p>\n        ",
+      "category": "General Health",
+      "featured_image": "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&q=80&w=800",
+      "image_alt": "Patient taking notes during medical consultation",
+      "author": "Dr. A. Adebayo",
+      "status": "published",
+      "medical_review_status": "Reviewed",
+      "published_at": "2026-08-08T18:22:15.288Z",
+      "reading_time": 5,
+      "created_at": "2026-08-12T18:22:15.289Z",
+      "updated_at": "2026-08-12T18:22:15.289Z"
+    },
+    {
+      "id": 3,
+      "title": "Practical Health Tips for Parents of Young Children",
+      "slug": "practical-health-tips-for-parents-of-young-children",
+      "excerpt": "Essential advice for safeguarding child health, managing common childhood illnesses, and knowing when to visit the paediatrician.",
+      "content": "\n<h2>Supporting Healthy Child Development</h2>\n<p>Children's health needs evolve rapidly as they grow. Providing routine wellness checks, balanced nutrition, and safe environments lays a strong foundation for lifelong wellbeing.</p>\n\n<h3>Key Focus Areas for Paediatric Wellbeing</h3>\n<ul>\n  <li><strong>Routine Monitoring:</strong> Track growth milestones, temperature, and feeding habits consistently.</li>\n  <li><strong>Hydration and Nutrition:</strong> Ensure children have access to clean drinking water, whole grains, fruits, and adequate protein.</li>\n  <li><strong>Hygiene Practices:</strong> Encourage regular handwashing to prevent common infections in school and play settings.</li>\n  <li><strong>Recognizing Warning Signs:</strong> High fever, persistent lethargy, difficulty breathing, or poor fluid intake warrant prompt paediatric evaluation.</li>\n</ul>\n\n<p>Starlight Hospital's paediatric service is designed to support parents and caregivers through every stage of child growth and healthcare assessment.</p>\n        ",
+      "category": "Child Health",
+      "featured_image": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=800",
+      "image_alt": "Paediatric specialist evaluating a child at Starlight Hospital",
+      "author": "Paediatric Care Team",
+      "status": "published",
+      "medical_review_status": "Reviewed",
+      "published_at": "2026-08-09T18:22:15.288Z",
+      "reading_time": 4,
+      "created_at": "2026-08-12T18:22:15.290Z",
+      "updated_at": "2026-08-12T18:22:15.290Z"
+    },
+    {
+      "id": 4,
+      "title": "Understanding the Importance of Antenatal Care",
+      "slug": "understanding-the-importance-of-antenatal-care",
+      "excerpt": "Regular antenatal consultations support maternal wellbeing, monitor fetal development, and prepare mothers for safe delivery.",
+      "content": "\n<h2>Comprehensive Care Throughout Pregnancy</h2>\n<p>Antenatal care provides essential health monitoring for expectant mothers and unborn babies. Early and regular visits allow clinicians to track progress and identify potential health needs proactively.</p>\n\n<h3>What Antenatal Visits Include</h3>\n<ul>\n  <li>Regular blood pressure and blood sugar checks</li>\n  <li>Monitoring fetal growth and positioning</li>\n  <li>Maternal health counseling and nutritional guidance</li>\n  <li>Screening tests and diagnostic assessments</li>\n</ul>\n\n<p>Our Obstetrics & Gynaecology service in Jajo, Ikorodu offers compassionate, practical consultations tailored to expectant mothers.</p>\n        ",
+      "category": "Pregnancy & Maternal Health",
+      "featured_image": "https://images.unsplash.com/photo-1531983412531-1f49a365ffed?auto=format&fit=crop&q=80&w=800",
+      "image_alt": "Expectant mother receiving healthcare guidance at Starlight Hospital",
+      "author": "Maternal Care Unit",
+      "status": "published",
+      "medical_review_status": "Reviewed",
+      "published_at": "2026-08-10T18:22:15.288Z",
+      "reading_time": 6,
+      "created_at": "2026-08-12T18:22:15.290Z",
+      "updated_at": "2026-08-12T18:22:15.290Z"
+    },
+    {
+      "id": 5,
+      "title": "What Patients Should Know Before a Laboratory Test",
+      "slug": "what-patients-should-know-before-a-laboratory-test",
+      "excerpt": "How to prepare properly for routine blood tests, urine investigations, and diagnostic assessments for accurate results.",
+      "content": "\n<h2>Preparing for Your Diagnostic Investigation</h2>\n<p>Diagnostic laboratory tests are crucial tools that aid clinicians in accurately evaluating health conditions. Proper preparation ensures test results are reliable and actionable.</p>\n\n<h3>General Preparation Guidelines</h3>\n<ul>\n  <li><strong>Fasting instructions:</strong> Certain blood tests require 8–12 hours of fasting from food and beverages other than plain water.</li>\n  <li><strong>Medication review:</strong> Inform your clinician about any prescription drugs, herbal supplements, or vitamins you currently take.</li>\n  <li><strong>Follow hospital directions:</strong> Always verify test-specific preparation details with Starlight Hospital staff before your visit.</li>\n</ul>\n        ",
+      "category": "Laboratory / Diagnostics",
+      "featured_image": "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80&w=800",
+      "image_alt": "Laboratory diagnostic equipment at Starlight Hospital",
+      "author": "Diagnostic Laboratory Unit",
+      "status": "published",
+      "medical_review_status": "Reviewed",
+      "published_at": "2026-08-11T18:22:15.288Z",
+      "reading_time": 3,
+      "created_at": "2026-08-12T18:22:15.291Z",
+      "updated_at": "2026-08-12T18:22:15.291Z"
+    },
+    {
+      "id": 6,
+      "title": "Healthy Habits That Support Everyday Wellbeing",
+      "slug": "healthy-habits-that-support-everyday-wellbeing",
+      "excerpt": "Simple, sustainable lifestyle practices that foster preventive health, immunity, and overall energy for individuals and families.",
+      "content": "\n<h2>Building Long-Term Health Through Daily Choices</h2>\n<p>Preventive health education empowers individuals to make informed daily decisions that improve overall quality of life and reduce the risk of chronic conditions.</p>\n\n<h3>Pillars of Everyday Wellness</h3>\n<ul>\n  <li><strong>Balanced Nutrition:</strong> Incorporating fresh vegetables, fruits, and adequate hydration daily.</li>\n  <li><strong>Physical Activity:</strong> Engaging in moderate exercise such as walking or active outdoor routines.</li>\n  <li><strong>Restful Sleep:</strong> Aiming for 7 to 8 hours of quality sleep to aid recovery and mental clarity.</li>\n  <li><strong>Regular Health Check-ups:</strong> Visiting your local healthcare clinic for routine baseline assessments.</li>\n</ul>\n        ",
+      "category": "Preventive Health",
+      "featured_image": "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=800",
+      "image_alt": "Healthy lifestyle illustration for family health",
+      "author": "Health Education Desk",
+      "status": "published",
+      "medical_review_status": "Reviewed",
+      "published_at": "2026-08-12T18:22:15.288Z",
+      "reading_time": 4,
+      "created_at": "2026-08-12T18:22:15.291Z",
+      "updated_at": "2026-08-12T18:22:15.291Z"
+    }
+  ],
+  "appointment_requests": [
+    {
+      "id": 1,
+      "full_name": "Babatunde Ogundele",
+      "phone_number": "08023456789",
+      "service_needed": "General Outpatient / Medical Consultation",
+      "preferred_date": "2026-08-15",
+      "preferred_time": "10:00 AM",
+      "message": "Requesting consultation for general medical checkup.",
+      "consent": 1,
+      "status": "New",
+      "admin_notes": "",
+      "created_at": "2026-08-12T18:22:15.292Z",
+      "updated_at": "2026-08-12T18:22:15.292Z"
+    },
+    {
+      "id": 2,
+      "full_name": "Chioma Ezenwa",
+      "phone_number": "07011223344",
+      "service_needed": "Obstetrics & Gynaecology",
+      "preferred_date": "2026-08-16",
+      "preferred_time": "02:00 PM",
+      "message": "Antenatal care appointment request.",
+      "consent": 1,
+      "status": "New",
+      "admin_notes": "",
+      "created_at": "2026-08-12T18:22:15.293Z",
+      "updated_at": "2026-08-12T18:22:15.293Z"
+    },
+    {
+      "id": 3,
+      "full_name": "Oluwaseun Bakare",
+      "phone_number": "08053587646",
+      "service_needed": "General Outpatient / Medical Consultation",
+      "preferred_date": "",
+      "preferred_time": "",
+      "message": "Testing appointment request submission",
+      "consent": 1,
+      "status": "New",
+      "admin_notes": "",
+      "created_at": "2026-08-12T18:33:06.003Z",
+      "updated_at": "2026-08-12T18:33:06.003Z"
+    }
+  ],
+  "enquiries": [
+    {
+      "id": 1,
+      "name": "Funke Adeyemi",
+      "phone": "08099887766",
+      "email": "funke@example.com",
+      "subject": "Service enquiry",
+      "message": "Please do you offer lab testing for full blood count on Saturdays?",
+      "preferred_contact": "Phone",
+      "consent": 1,
+      "status": "New",
+      "created_at": "2026-08-12T18:22:15.293Z",
+      "updated_at": "2026-08-12T18:22:15.293Z"
+    },
+    {
+      "id": 2,
+      "name": "Folashade Adeleke",
+      "phone": "07079333090",
+      "email": "folashade@example.com",
+      "subject": "Service enquiry",
+      "message": "Enquiring about laboratory test preparation",
+      "preferred_contact": "Phone",
+      "consent": 1,
+      "status": "New",
+      "created_at": "2026-08-12T18:33:14.350Z",
+      "updated_at": "2026-08-12T18:33:14.350Z"
+    }
+  ]
+}
