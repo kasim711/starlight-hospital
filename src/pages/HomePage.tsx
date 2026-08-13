@@ -89,19 +89,6 @@ export const HomePage: React.FC = () => {
                 <Phone className="w-4 h-4 text-amber-400" /> Call 08053587646
               </a>
             </div>
-
-            <div className="flex flex-wrap items-center gap-3 pt-5 border-t border-white/20 text-xs font-semibold">
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-navy-950/70 border border-white/10 text-white backdrop-blur-sm">
-                <Phone className="w-3.5 h-3.5 text-teal-400 flex-shrink-0" />
-                <a href="tel:08053587646" className="hover:text-amber-300 font-extrabold transition-colors">08053587646</a>
-                <span className="text-slate-500">|</span>
-                <a href="tel:07079333090" className="hover:text-amber-300 font-extrabold transition-colors">07079333090</a>
-              </div>
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-navy-950/70 border border-white/10 text-white backdrop-blur-sm">
-                <MapPin className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
-                <span className="text-slate-200 font-semibold">Jajo, Ikorodu, Lagos</span>
-              </div>
-            </div>
           </div>
         </div>
       </section>

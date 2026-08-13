@@ -53,33 +53,6 @@ export const Header: React.FC = () => {
     <header className={`w-full sticky top-0 z-50 font-sans transition-all duration-300 ${
       scrolled ? 'glass-nav shadow-md border-b border-slate-200/80 py-0.5' : 'bg-white border-b border-slate-200 py-0'
     }`}>
-      
-      {/* Top Utility & Emergency Bar */}
-      <div className="bg-navy-500 text-white text-xs py-2 px-4 border-b border-navy-600/60">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-          
-          <div className="flex items-center gap-4 flex-wrap justify-center sm:justify-start">
-            <span className="font-medium text-slate-200 flex items-center gap-1.5 text-[11px] sm:text-xs">
-              <MapPin className="w-3.5 h-3.5 text-gold-400 flex-shrink-0" />
-              <span className="truncate max-w-xs sm:max-w-lg">{settings.address}</span>
-            </span>
-          </div>
-
-          <div className="flex items-center gap-4 text-[11px] sm:text-xs">
-            <div className="flex items-center gap-2">
-              <span className="text-slate-300 font-normal hidden md:inline">Contact Hospital:</span>
-              <a href={phoneLink1} className="font-bold text-white hover:text-gold-400 transition-colors flex items-center gap-1">
-                <Phone className="w-3 h-3 text-gold-400 sm:hidden" /> {settings.phone_primary}
-              </a>
-              <span className="text-slate-400">|</span>
-              <a href={phoneLink2} className="font-bold text-white hover:text-gold-400 transition-colors">
-                {settings.phone_secondary}
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </div>
 
       {/* Main Navigation Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
