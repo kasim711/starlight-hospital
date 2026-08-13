@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, MapPin, Shield, Heart, ArrowUpRight } from 'lucide-react';
+import { Phone, MapPin, Shield, Heart, ArrowUpRight, Lock } from 'lucide-react';
 import { fetchServices } from '../services/api';
 
 export const Footer: React.FC = () => {
@@ -42,23 +42,23 @@ export const Footer: React.FC = () => {
           {/* Col 1: Hospital Profile */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gold-500 text-navy-900 flex items-center justify-center font-bold">
+              <div className="w-10 h-10 rounded-xl bg-gold-500 text-navy-900 flex items-center justify-center font-bold shadow-sm">
                 <Shield className="w-6 h-6" />
               </div>
               <div>
                 <h3 className="font-extrabold text-lg tracking-tight leading-none text-white">{settings.hospital_name}</h3>
-                <span className="text-[11px] font-bold text-gold-500 tracking-widest uppercase font-mono">{settings.motto}</span>
+                <span className="text-[11px] font-extrabold text-gold-500 tracking-widest uppercase font-mono">{settings.motto}</span>
               </div>
             </div>
             
-            <p className="text-xs text-slate-300 leading-relaxed">
+            <p className="text-xs text-slate-300 leading-relaxed font-normal">
               {settings.footer_microcopy}
             </p>
 
             <div className="pt-2">
               <Link
                 to="/appointment"
-                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-teal-500 text-white text-xs font-bold uppercase tracking-wider hover:bg-teal-600 transition-colors shadow-sm"
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-teal-500 text-white text-xs font-bold uppercase tracking-wider hover:bg-teal-600 transition-colors shadow-md"
               >
                 Request Appointment <ArrowUpRight className="w-3.5 h-3.5" />
               </Link>
@@ -67,12 +67,12 @@ export const Footer: React.FC = () => {
 
           {/* Col 2: Core Services */}
           <div className="space-y-3">
-            <h4 className="font-bold text-sm uppercase tracking-wider text-gold-500 border-b border-navy-600 pb-2">Clinical Services</h4>
+            <h4 className="font-bold text-xs uppercase tracking-widest text-gold-500 border-b border-navy-600/80 pb-2">Clinical Services</h4>
             <ul className="space-y-2 text-xs text-slate-300">
               {services.map((s) => (
                 <li key={s.service_id}>
-                  <Link to={`/services/${s.service_id}`} className="hover:text-teal-400 transition-colors flex items-center gap-1">
-                    <span>•</span> {s.title}
+                  <Link to={`/services/${s.service_id}`} className="hover:text-teal-400 transition-colors flex items-center gap-1.5">
+                    <span className="text-teal-500 font-bold">•</span> {s.title}
                   </Link>
                 </li>
               ))}
@@ -81,7 +81,7 @@ export const Footer: React.FC = () => {
 
           {/* Col 3: Quick Navigation */}
           <div className="space-y-3">
-            <h4 className="font-bold text-sm uppercase tracking-wider text-gold-500 border-b border-navy-600 pb-2">Website Navigation</h4>
+            <h4 className="font-bold text-xs uppercase tracking-widest text-gold-500 border-b border-navy-600/80 pb-2">Website Navigation</h4>
             <ul className="space-y-2 text-xs text-slate-300">
               <li><Link to="/" className="hover:text-teal-400 transition-colors">Home Page</Link></li>
               <li><Link to="/about" className="hover:text-teal-400 transition-colors">About Starlight Hospital</Link></li>
@@ -96,17 +96,17 @@ export const Footer: React.FC = () => {
 
           {/* Col 4: Contact & Location */}
           <div className="space-y-3">
-            <h4 className="font-bold text-sm uppercase tracking-wider text-gold-500 border-b border-navy-600 pb-2">Location & Contact</h4>
+            <h4 className="font-bold text-xs uppercase tracking-widest text-gold-500 border-b border-navy-600/80 pb-2">Location & Contact</h4>
             <div className="space-y-3 text-xs text-slate-300">
-              <div className="flex items-start gap-2">
+              <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5" />
-                <span>{settings.address}</span>
+                <span className="leading-relaxed">{settings.address}</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-teal-400 flex-shrink-0" />
-                <div className="flex flex-col">
-                  <a href={phoneLink1} className="hover:text-gold-500 font-bold">{settings.phone_primary}</a>
-                  <a href={phoneLink2} className="hover:text-gold-500 font-bold">{settings.phone_secondary}</a>
+                <div className="flex flex-col gap-0.5">
+                  <a href={phoneLink1} className="hover:text-gold-500 font-bold transition-colors">{settings.phone_primary}</a>
+                  <a href={phoneLink2} className="hover:text-gold-500 font-bold transition-colors">{settings.phone_secondary}</a>
                 </div>
               </div>
             </div>
@@ -116,23 +116,25 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Mandatory Medical Disclaimer Banner */}
-      <div className="bg-navy-600 py-4 px-4 border-t border-navy-600 text-slate-300 text-xs leading-relaxed">
+      <div className="bg-navy-600/80 py-4 px-4 border-t border-navy-600 text-slate-300 text-xs leading-relaxed">
         <div className="max-w-7xl mx-auto flex items-start gap-3">
-          <Heart className="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" />
-          <p className="text-[11px] text-slate-300">
-            <strong>Medical Disclaimer:</strong> The health information published on this website is provided for general educational purposes and is not a substitute for an examination, diagnosis, or personalised medical advice from a qualified healthcare professional. Always consult a healthcare provider for symptoms or medical concerns.
+          <Heart className="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5" />
+          <p className="text-[11px] text-slate-300 leading-relaxed">
+            <strong className="text-white">Medical Disclaimer:</strong> The health information published on this website is provided for general educational purposes and is not a substitute for an examination, diagnosis, or personalised medical advice from a qualified healthcare professional. Always consult a healthcare provider for symptoms or medical concerns.
           </p>
         </div>
       </div>
 
       {/* Copyright Bar */}
       <div className="bg-navy-700 py-4 px-4 text-center text-[11px] text-slate-400 border-t border-navy-600">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <span>© {new Date().getFullYear()} Starlight Hospital. Motto: <strong className="text-gold-500 font-mono">DEO MEDICE</strong>. All rights reserved.</span>
-          <div className="flex gap-4">
-            <Link to="/privacy-policy" className="hover:underline">Privacy Policy</Link>
-            <Link to="/terms-disclaimer" className="hover:underline">Terms & Disclaimer</Link>
-            <Link to="/admin/login" className="text-slate-400 hover:text-white font-semibold">Staff CMS Login</Link>
+          <div className="flex items-center gap-4">
+            <Link to="/privacy-policy" className="hover:text-slate-200 transition-colors">Privacy Policy</Link>
+            <Link to="/terms-disclaimer" className="hover:text-slate-200 transition-colors">Terms & Disclaimer</Link>
+            <Link to="/admin/login" className="text-slate-400 hover:text-gold-400 font-semibold transition-colors flex items-center gap-1">
+              <Lock className="w-3 h-3 text-gold-500" /> Staff CMS Login
+            </Link>
           </div>
         </div>
       </div>

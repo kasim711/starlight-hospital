@@ -43,14 +43,15 @@ export const ContactPage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-16 pb-16">
+    <div className="space-y-16 pb-16 font-sans">
       {/* Hero Header */}
       <section className="bg-navy-500 text-white py-16 md:py-20 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-gold-500 font-bold text-xs tracking-wider uppercase border border-white/20">
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#C49A4A_1px,transparent_1px)] [background-size:20px_20px]"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 relative z-10">
+          <span className="badge-gold">
             CONTACT STARLIGHT HOSPITAL
           </span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
             Contact Starlight Hospital
           </h1>
           <p className="text-slate-200 text-base sm:text-xl max-w-3xl mx-auto font-normal leading-relaxed">
@@ -65,32 +66,32 @@ export const ContactPage: React.FC = () => {
           
           {/* Left Column: Hospital Contact Details */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-card space-y-6">
+            <div className="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-card space-y-6">
               <div className="space-y-2">
-                <span className="text-gold-500 font-bold text-xs uppercase tracking-widest">DEO MEDICE</span>
-                <h2 className="text-2xl font-bold text-navy-500">Starlight Hospital</h2>
+                <span className="badge-gold">DEO MEDICE</span>
+                <h2 className="text-2xl font-extrabold text-navy-500 tracking-tight">Starlight Hospital</h2>
               </div>
 
-              <div className="space-y-5 text-slate-700 text-sm">
+              <div className="space-y-5 text-slate-700 text-sm font-normal">
                 <div className="flex items-start gap-3.5">
-                  <MapPin className="w-5 h-5 text-teal-500 flex-shrink-0 mt-1" />
+                  <MapPin className="w-5 h-5 text-teal-600 flex-shrink-0 mt-1" />
                   <div>
-                    <span className="font-bold text-navy-500 block">Hospital Address</span>
-                    <p className="leading-relaxed">
+                    <span className="font-extrabold text-navy-500 block uppercase tracking-wider text-xs">Hospital Address</span>
+                    <p className="leading-relaxed font-semibold text-slate-800">
                       Block A Plot 6 & 19, Jajo Phase 2, Crystal Estate, along Imowo-Nla Road, Jajo, Ikorodu, Lagos.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3.5 border-t border-slate-100 pt-4">
-                  <Phone className="w-5 h-5 text-teal-500 flex-shrink-0 mt-1" />
+                  <Phone className="w-5 h-5 text-teal-600 flex-shrink-0 mt-1" />
                   <div>
-                    <span className="font-bold text-navy-500 block">Phone Numbers</span>
+                    <span className="font-extrabold text-navy-500 block uppercase tracking-wider text-xs">Phone Numbers</span>
                     <div className="space-y-1 pt-1">
-                      <a href="tel:08053587646" className="block text-navy-600 font-semibold hover:text-teal-600 transition-colors">
+                      <a href="tel:08053587646" className="block text-navy-600 font-extrabold hover:text-teal-600 transition-colors">
                         08053587646
                       </a>
-                      <a href="tel:07079333090" className="block text-navy-600 font-semibold hover:text-teal-600 transition-colors">
+                      <a href="tel:07079333090" className="block text-navy-600 font-extrabold hover:text-teal-600 transition-colors">
                         07079333090
                       </a>
                     </div>
@@ -100,8 +101,8 @@ export const ContactPage: React.FC = () => {
                 <div className="flex items-start gap-3.5 border-t border-slate-100 pt-4">
                   <ShieldCheck className="w-5 h-5 text-gold-500 flex-shrink-0 mt-1" />
                   <div>
-                    <span className="font-bold text-navy-500 block">Hospital Motto</span>
-                    <p className="text-gold-600 font-semibold">DEO MEDICE</p>
+                    <span className="font-extrabold text-navy-500 block uppercase tracking-wider text-xs">Hospital Motto</span>
+                    <p className="text-gold-600 font-extrabold font-mono">DEO MEDICE</p>
                   </div>
                 </div>
               </div>
@@ -111,7 +112,7 @@ export const ContactPage: React.FC = () => {
                   href="https://maps.google.com/?q=Starlight+Hospital+Jajo+Ikorodu+Lagos"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-teal-500 text-white font-bold text-sm hover:bg-teal-600 transition-colors shadow-md"
+                  className="w-full btn-teal text-xs uppercase tracking-wider"
                 >
                   <MapPin className="w-4 h-4" /> GET DIRECTIONS ON GOOGLE MAPS
                 </a>
@@ -121,24 +122,24 @@ export const ContactPage: React.FC = () => {
 
           {/* Right Column: Contact Form */}
           <div className="lg:col-span-7">
-            <div className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-card">
+            <div className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/80 shadow-card">
               
               {submitted ? (
                 <div className="text-center py-10 space-y-4">
-                  <div className="w-16 h-16 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-16 h-16 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center mx-auto shadow-md">
                     <CheckCircle2 className="w-10 h-10" />
                   </div>
-                  <h3 className="text-2xl font-bold text-navy-500">Enquiry Submitted</h3>
-                  <p className="text-slate-700 text-base max-w-md mx-auto leading-relaxed">
+                  <h3 className="text-2xl font-extrabold text-navy-500 tracking-tight">Enquiry Submitted</h3>
+                  <p className="text-slate-700 text-base max-w-md mx-auto leading-relaxed font-normal">
                     Thank you. Your enquiry has been received. The hospital team will contact you using the details provided.
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <h2 className="text-2xl font-bold text-navy-500">Send an Enquiry</h2>
+                  <h2 className="text-2xl font-extrabold text-navy-500 tracking-tight">Send an Enquiry</h2>
 
                   {errorMessage && (
-                    <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-xl text-sm font-medium">
+                    <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-xl text-sm font-bold">
                       {errorMessage}
                     </div>
                   )}
@@ -147,7 +148,7 @@ export const ContactPage: React.FC = () => {
                     
                     {/* Full Name */}
                     <div className="space-y-2">
-                      <label className="block text-sm font-bold text-navy-500">
+                      <label className="block text-xs font-bold text-navy-500 uppercase tracking-wider">
                         Full Name <span className="text-red-500">*</span>
                       </label>
                       <input
@@ -156,13 +157,13 @@ export const ContactPage: React.FC = () => {
                         placeholder="Your full name"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm"
+                        className="input-healthcare"
                       />
                     </div>
 
                     {/* Phone Number */}
                     <div className="space-y-2">
-                      <label className="block text-sm font-bold text-navy-500">
+                      <label className="block text-xs font-bold text-navy-500 uppercase tracking-wider">
                         Phone Number <span className="text-red-500">*</span>
                       </label>
                       <input
@@ -171,13 +172,13 @@ export const ContactPage: React.FC = () => {
                         placeholder="e.g. 08053587646"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm"
+                        className="input-healthcare"
                       />
                     </div>
 
                     {/* Email */}
                     <div className="space-y-2 sm:col-span-2">
-                      <label className="block text-sm font-bold text-navy-500">
+                      <label className="block text-xs font-bold text-navy-500 uppercase tracking-wider">
                         Email Address (Optional)
                       </label>
                       <input
@@ -185,19 +186,19 @@ export const ContactPage: React.FC = () => {
                         placeholder="yourname@example.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm"
+                        className="input-healthcare"
                       />
                     </div>
 
                     {/* Reason Dropdown */}
                     <div className="space-y-2 sm:col-span-2">
-                      <label className="block text-sm font-bold text-navy-500">
+                      <label className="block text-xs font-bold text-navy-500 uppercase tracking-wider">
                         Reason for Enquiry <span className="text-red-500">*</span>
                       </label>
                       <select
                         value={formData.subject}
                         onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm bg-white"
+                        className="input-healthcare bg-white"
                       >
                         <option value="Appointment request">Appointment request</option>
                         <option value="Service enquiry">Service enquiry</option>
@@ -209,7 +210,7 @@ export const ContactPage: React.FC = () => {
 
                     {/* Message */}
                     <div className="space-y-2 sm:col-span-2">
-                      <label className="block text-sm font-bold text-navy-500">
+                      <label className="block text-xs font-bold text-navy-500 uppercase tracking-wider">
                         Message <span className="text-red-500">*</span>
                       </label>
                       <textarea
@@ -218,17 +219,17 @@ export const ContactPage: React.FC = () => {
                         placeholder="Write your enquiry message..."
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm"
+                        className="input-healthcare"
                       ></textarea>
                     </div>
 
                     {/* Preferred Contact Method */}
                     <div className="space-y-2 sm:col-span-2">
-                      <label className="block text-sm font-bold text-navy-500">
+                      <label className="block text-xs font-bold text-navy-500 uppercase tracking-wider">
                         Preferred Contact Method <span className="text-red-500">*</span>
                       </label>
                       <div className="flex items-center gap-6 pt-1">
-                        <label className="flex items-center gap-2 cursor-pointer text-sm">
+                        <label className="flex items-center gap-2 cursor-pointer text-sm font-semibold text-slate-700">
                           <input
                             type="radio"
                             name="contact_method"
@@ -239,7 +240,7 @@ export const ContactPage: React.FC = () => {
                           />
                           Phone Call
                         </label>
-                        <label className="flex items-center gap-2 cursor-pointer text-sm">
+                        <label className="flex items-center gap-2 cursor-pointer text-sm font-semibold text-slate-700">
                           <input
                             type="radio"
                             name="contact_method"
@@ -263,7 +264,7 @@ export const ContactPage: React.FC = () => {
                           onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
                           className="mt-1 w-4 h-4 text-teal-600 rounded border-slate-300 focus:ring-teal-500"
                         />
-                        <span className="text-slate-700 text-xs sm:text-sm leading-relaxed">
+                        <span className="text-slate-700 text-xs sm:text-sm leading-relaxed font-normal">
                           I consent to Starlight Hospital storing and using my contact details to process and respond to this enquiry. <span className="text-red-500">*</span>
                         </span>
                       </label>
@@ -275,7 +276,7 @@ export const ContactPage: React.FC = () => {
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-navy-500 text-white font-bold text-base hover:bg-navy-600 transition-all shadow-md disabled:opacity-50"
+                      className="w-full btn-primary text-xs uppercase tracking-wider"
                     >
                       <Send className="w-4 h-4" />
                       {submitting ? 'Sending Enquiry...' : 'SEND ENQUIRY'}
@@ -293,17 +294,17 @@ export const ContactPage: React.FC = () => {
 
       {/* Google Maps Embed Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-card p-4 space-y-4">
+        <div className="bg-white rounded-3xl border border-slate-200/80 overflow-hidden shadow-card p-4 space-y-4">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-2 gap-2">
             <div>
-              <h3 className="font-bold text-navy-500 text-lg">Hospital Location Map</h3>
-              <p className="text-xs text-slate-500">Block A Plot 6 & 19, Jajo Phase 2, Crystal Estate, Imowo-Nla Road, Jajo, Ikorodu</p>
+              <h3 className="font-extrabold text-navy-500 text-lg tracking-tight">Hospital Location Map</h3>
+              <p className="text-xs text-slate-500 font-medium">Block A Plot 6 & 19, Jajo Phase 2, Crystal Estate, Imowo-Nla Road, Jajo, Ikorodu</p>
             </div>
             <a
               href="https://maps.google.com/?q=Starlight+Hospital+Jajo+Ikorodu+Lagos"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-teal-600 hover:text-navy-500"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-teal-600 hover:text-navy-500 transition-colors uppercase tracking-wider"
             >
               <MapPin className="w-4 h-4" /> Open in Google Maps
             </a>

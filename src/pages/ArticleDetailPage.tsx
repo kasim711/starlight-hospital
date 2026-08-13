@@ -28,10 +28,10 @@ export const ArticleDetailPage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="max-w-4xl mx-auto px-4 py-20">
+      <div className="max-w-4xl mx-auto px-4 py-20 font-sans">
         <div className="animate-pulse space-y-6">
-          <div className="h-8 bg-slate-200 rounded w-1/3"></div>
-          <div className="h-12 bg-slate-200 rounded w-3/4"></div>
+          <div className="h-8 bg-slate-200 rounded-xl w-1/3"></div>
+          <div className="h-12 bg-slate-200 rounded-xl w-3/4"></div>
           <div className="h-96 bg-slate-200 rounded-3xl"></div>
         </div>
       </div>
@@ -40,12 +40,12 @@ export const ArticleDetailPage: React.FC = () => {
 
   if (error || !article) {
     return (
-      <div className="max-w-4xl mx-auto px-4 py-20 text-center space-y-4">
-        <h2 className="text-2xl font-bold text-navy-500">Article Not Found</h2>
-        <p className="text-slate-600">The requested health education article could not be found.</p>
+      <div className="max-w-4xl mx-auto px-4 py-20 text-center space-y-4 font-sans">
+        <h2 className="text-2xl font-extrabold text-navy-500 tracking-tight">Article Not Found</h2>
+        <p className="text-slate-600 font-normal">The requested health education article could not be found.</p>
         <Link
           to="/health-information"
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-teal-500 text-white font-bold text-sm"
+          className="btn-teal text-xs uppercase tracking-wider"
         >
           <ArrowLeft className="w-4 h-4" /> Return to Health Information
         </Link>
@@ -54,10 +54,11 @@ export const ArticleDetailPage: React.FC = () => {
   }
 
   return (
-    <div className="space-y-12 pb-16">
+    <div className="space-y-12 pb-16 font-sans">
       {/* Article Header & Breadcrumbs */}
-      <section className="bg-navy-500 text-white py-12 md:py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-4">
+      <section className="bg-navy-500 text-white py-12 md:py-16 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#C49A4A_1px,transparent_1px)] [background-size:20px_20px]"></div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-4 relative z-10">
           
           {/* Breadcrumbs */}
           <nav className="flex items-center gap-2 text-xs font-semibold text-slate-300 flex-wrap">
@@ -65,29 +66,29 @@ export const ArticleDetailPage: React.FC = () => {
             <span>/</span>
             <Link to="/health-information" className="hover:text-white transition-colors">Health Information</Link>
             <span>/</span>
-            <span className="text-gold-500">{article.category}</span>
+            <span className="text-gold-400 font-bold">{article.category}</span>
           </nav>
 
           <div className="flex items-center gap-3 pt-2">
-            <span className="bg-teal-500 text-white text-xs font-bold px-3 py-1 rounded-md uppercase tracking-wider">
+            <span className="badge-teal">
               {article.category}
             </span>
             
-            {/* Medically Reviewed Badge (ONLY shown when medical_review_status is Reviewed) */}
+            {/* Medically Reviewed Badge */}
             {article.medical_review_status === 'Reviewed' && (
-              <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 text-xs font-semibold px-3 py-1 rounded-md flex items-center gap-1.5">
+              <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1.5 uppercase tracking-wider">
                 <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
                 Medically Reviewed
               </span>
             )}
           </div>
 
-          <h1 className="text-2xl sm:text-4xl font-extrabold text-white leading-tight">
+          <h1 className="text-2xl sm:text-4xl font-extrabold text-white leading-tight tracking-tight">
             {article.title}
           </h1>
 
-          <div className="flex items-center gap-4 text-xs sm:text-sm text-slate-300 pt-2 border-t border-white/10">
-            <span className="font-semibold text-gold-500">By {article.author}</span>
+          <div className="flex items-center gap-4 text-xs sm:text-sm text-slate-300 pt-3 border-t border-white/15">
+            <span className="font-bold text-gold-400">By {article.author}</span>
             <span>•</span>
             <span className="flex items-center gap-1"><Clock className="w-4 h-4 text-teal-400" /> {article.reading_time} min read</span>
             {article.published_at && (
@@ -105,7 +106,7 @@ export const ArticleDetailPage: React.FC = () => {
       <section className="max-w-4xl mx-auto px-4 sm:px-6 space-y-8">
         
         {/* Featured Image */}
-        <div className="rounded-3xl overflow-hidden shadow-lg border border-slate-200">
+        <div className="rounded-3xl overflow-hidden shadow-card border border-slate-200/80">
           <img
             src={article.featured_image}
             alt={article.image_alt || article.title}
@@ -114,70 +115,72 @@ export const ArticleDetailPage: React.FC = () => {
         </div>
 
         {/* Excerpt Lead */}
-        <div className="bg-slate-100 p-6 rounded-2xl border-l-4 border-teal-500 text-slate-800 font-medium text-base sm:text-lg leading-relaxed">
+        <div className="bg-slate-100/90 p-6 rounded-2xl border-l-4 border-teal-500 text-slate-800 font-medium text-base sm:text-lg leading-relaxed shadow-sm">
           {article.excerpt}
         </div>
 
         {/* Article HTML Content */}
         <div
-          className="prose-article bg-white p-6 sm:p-10 rounded-3xl border border-slate-200 shadow-card"
+          className="prose-article bg-white p-6 sm:p-10 rounded-3xl border border-slate-200/80 shadow-card"
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
 
         {/* Medical Review Disclaimer Box */}
-        <div className="bg-slate-100 border border-slate-200 rounded-2xl p-6 flex items-start gap-4 text-slate-700">
-          <AlertCircle className="w-6 h-6 text-teal-600 flex-shrink-0 mt-1" />
+        <div className="bg-slate-100/90 border border-slate-200/80 rounded-2xl p-6 flex items-start gap-4 text-slate-700 shadow-sm">
+          <AlertCircle className="w-6 h-6 text-teal-600 flex-shrink-0 mt-0.5" />
           <div className="space-y-1 text-xs sm:text-sm">
-            <span className="font-bold text-navy-500 block">Medical Disclaimer</span>
-            <p className="leading-relaxed">
+            <span className="font-extrabold text-navy-500 block uppercase tracking-wider">Medical Disclaimer</span>
+            <p className="leading-relaxed font-normal">
               The health information published on this website is provided for general educational purposes and is not a substitute for an examination, diagnosis, or personalised medical advice from a qualified healthcare professional. If you have a health concern, contact Starlight Hospital or an appropriate healthcare provider.
             </p>
           </div>
         </div>
 
         {/* Appointment CTA Box */}
-        <div className="bg-navy-500 text-white rounded-3xl p-8 sm:p-10 text-center space-y-6 shadow-xl">
-          <div className="w-12 h-12 rounded-xl bg-teal-500 text-white mx-auto flex items-center justify-center font-bold">
+        <div className="bg-navy-500 text-white rounded-3xl p-8 sm:p-10 text-center space-y-6 shadow-xl border border-navy-600">
+          <div className="w-12 h-12 rounded-2xl bg-teal-500 text-white mx-auto flex items-center justify-center font-bold shadow-md">
             <Shield className="w-6 h-6" />
           </div>
-          <h3 className="text-2xl font-bold text-white">Have Questions About Your Health?</h3>
-          <p className="text-slate-300 text-sm max-w-xl mx-auto">
+          <h3 className="text-2xl font-extrabold text-white tracking-tight">Have Questions About Your Health?</h3>
+          <p className="text-slate-200 text-sm max-w-xl mx-auto font-normal">
             Schedule a medical consultation at Starlight Hospital in Jajo, Ikorodu to speak directly with a healthcare provider.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <Link
               to="/appointment"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-teal-500 text-white font-bold text-sm hover:bg-teal-600 transition-colors shadow-md"
+              className="btn-teal text-xs uppercase tracking-wider"
             >
               <Calendar className="w-4 h-4" /> REQUEST AN APPOINTMENT
             </Link>
             <a
               href="tel:08053587646"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-white/30 text-white font-bold text-sm hover:bg-white/10 transition-colors"
+              className="btn-secondary bg-white/10 text-white hover:bg-white/20 border-white/30 text-xs uppercase tracking-wider"
             >
-              <Phone className="w-4 h-4 text-gold-500" /> CALL 08053587646
+              <Phone className="w-4 h-4 text-gold-400" /> CALL 08053587646
             </a>
           </div>
         </div>
 
         {/* Related Articles */}
         {related.length > 0 && (
-          <div className="space-y-6 pt-6 border-t border-slate-200">
-            <h3 className="text-2xl font-bold text-navy-500">Related Health Articles</h3>
+          <div className="space-y-6 pt-6 border-t border-slate-200/80">
+            <h3 className="text-2xl font-extrabold text-navy-500 tracking-tight">Related Health Articles</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {related.map((rel) => (
-                <div key={rel.id} className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-card transition-all p-4 space-y-3">
-                  <h4 className="font-bold text-navy-500 text-base line-clamp-2">
-                    <Link to={`/health-information/${rel.slug}`} className="hover:text-teal-600 transition-colors">
-                      {rel.title}
-                    </Link>
-                  </h4>
-                  <p className="text-slate-600 text-xs line-clamp-2">{rel.excerpt}</p>
+                <div key={rel.id} className="healthcare-card p-5 space-y-3 flex flex-col justify-between group">
+                  <div className="space-y-2">
+                    <h4 className="font-extrabold text-navy-500 text-base line-clamp-2 group-hover:text-teal-600 transition-colors">
+                      <Link to={`/health-information/${rel.slug}`}>
+                        {rel.title}
+                      </Link>
+                    </h4>
+                    <p className="text-slate-600 text-xs line-clamp-2 font-normal">{rel.excerpt}</p>
+                  </div>
                   <Link
                     to={`/health-information/${rel.slug}`}
-                    className="inline-flex items-center gap-1 text-teal-600 font-bold text-xs"
+                    className="inline-flex items-center gap-1 text-teal-600 font-bold text-xs uppercase tracking-wider hover:text-navy-500 transition-colors pt-2"
                   >
-                    Read Article <ArrowRight className="w-3.5 h-3.5" />
+                    Read Article <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               ))}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { submitAppointmentRequest } from '../services/api';
-import { Phone, Calendar, CheckCircle2, AlertTriangle, ShieldCheck, MapPin } from 'lucide-react';
+import { Phone, Calendar, CheckCircle2, AlertTriangle, ShieldCheck, MapPin, User, Mail, Clock, FileText } from 'lucide-react';
 
 export const AppointmentPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -43,14 +43,15 @@ export const AppointmentPage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-16 pb-16">
+    <div className="space-y-16 pb-16 font-sans">
       {/* Hero Header */}
       <section className="bg-navy-500 text-white py-16 md:py-20 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-gold-500 font-bold text-xs tracking-wider uppercase border border-white/20">
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#C49A4A_1px,transparent_1px)] [background-size:20px_20px]"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 relative z-10">
+          <span className="badge-gold">
             APPOINTMENT REQUEST FORM
           </span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
             Request an Appointment
           </h1>
           <p className="text-slate-200 text-base sm:text-xl max-w-3xl mx-auto font-normal leading-relaxed">
@@ -61,7 +62,7 @@ export const AppointmentPage: React.FC = () => {
 
       {/* Main Container */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6">
-        <div className="bg-white rounded-3xl border border-slate-200 shadow-card p-6 sm:p-12">
+        <div className="bg-white rounded-3xl border border-slate-200/80 shadow-card p-6 sm:p-12">
           
           {submitted ? (
             /* Confirmation Feedback UX */
@@ -71,20 +72,20 @@ export const AppointmentPage: React.FC = () => {
               </div>
               
               <div className="space-y-2">
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-navy-500">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-navy-500 tracking-tight">
                   Appointment Request Received
                 </h2>
-                <p className="text-slate-700 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+                <p className="text-slate-700 text-base sm:text-lg max-w-xl mx-auto leading-relaxed font-normal">
                   Your request has been submitted to Starlight Hospital. Please keep your phone available for confirmation.
                 </p>
               </div>
 
-              <div className="bg-gold-50 border border-gold-200 rounded-2xl p-5 text-slate-800 text-sm max-w-xl mx-auto space-y-2 text-left">
-                <div className="flex items-center gap-2 text-gold-800 font-bold">
-                  <AlertTriangle className="w-5 h-5 text-gold-600 flex-shrink-0" />
+              <div className="bg-gold-50/80 border border-gold-200/80 rounded-2xl p-5 text-slate-800 text-sm max-w-xl mx-auto space-y-2 text-left shadow-sm">
+                <div className="flex items-center gap-2 text-gold-800 font-bold uppercase tracking-wider text-xs">
+                  <AlertTriangle className="w-4 h-4 text-gold-600 flex-shrink-0" />
                   Urgent Notice
                 </div>
-                <p className="leading-relaxed text-xs sm:text-sm">
+                <p className="leading-relaxed text-xs sm:text-sm font-normal">
                   If your matter is urgent, contact the hospital directly by phone rather than relying on this form.
                 </p>
               </div>
@@ -92,13 +93,13 @@ export const AppointmentPage: React.FC = () => {
               <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a
                   href="tel:08053587646"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-navy-500 text-white font-bold text-sm hover:bg-navy-600 transition-colors shadow-md"
+                  className="w-full sm:w-auto btn-primary text-xs uppercase tracking-wider"
                 >
-                  <Phone className="w-4 h-4 text-gold-500" /> CALL 08053587646
+                  <Phone className="w-4 h-4 text-gold-400" /> CALL 08053587646
                 </a>
                 <a
                   href="tel:07079333090"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-slate-300 text-slate-700 font-bold text-sm hover:bg-slate-50 transition-colors"
+                  className="w-full sm:w-auto btn-secondary text-xs uppercase tracking-wider"
                 >
                   <Phone className="w-4 h-4 text-teal-600" /> CALL 07079333090
                 </a>
@@ -108,18 +109,18 @@ export const AppointmentPage: React.FC = () => {
             /* Appointment Request Form */
             <form onSubmit={handleSubmit} className="space-y-8">
               
-              <div className="bg-teal-50 border border-teal-200 rounded-2xl p-5 text-slate-800 text-xs sm:text-sm flex items-start gap-3">
+              <div className="bg-teal-50/80 border border-teal-200/80 rounded-2xl p-5 text-slate-800 text-xs sm:text-sm flex items-start gap-3 shadow-sm">
                 <ShieldCheck className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-bold text-navy-500 block">Appointment Confirmation Note</span>
-                  <p className="leading-relaxed">
+                  <span className="font-extrabold text-navy-500 block uppercase tracking-wider text-xs">Appointment Confirmation Note</span>
+                  <p className="leading-relaxed font-normal pt-0.5">
                     Submitting this form does not mean your appointment is immediately confirmed. Hospital staff will call your phone number to confirm scheduling details.
                   </p>
                 </div>
               </div>
 
               {errorMessage && (
-                <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-xl text-sm font-medium">
+                <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-xl text-sm font-bold">
                   {errorMessage}
                 </div>
               )}
@@ -128,7 +129,7 @@ export const AppointmentPage: React.FC = () => {
                 
                 {/* Full Name */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-bold text-navy-500">
+                  <label className="block text-xs font-bold text-navy-500 uppercase tracking-wider">
                     Full Name <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -137,13 +138,13 @@ export const AppointmentPage: React.FC = () => {
                     placeholder="Enter your full name"
                     value={formData.full_name}
                     onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm"
+                    className="input-healthcare"
                   />
                 </div>
 
                 {/* Phone Number */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-bold text-navy-500">
+                  <label className="block text-xs font-bold text-navy-500 uppercase tracking-wider">
                     Phone Number <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -152,19 +153,19 @@ export const AppointmentPage: React.FC = () => {
                     placeholder="e.g. 08012345678"
                     value={formData.phone_number}
                     onChange={(e) => setFormData({ ...formData, phone_number: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm"
+                    className="input-healthcare"
                   />
                 </div>
 
                 {/* Service Needed */}
                 <div className="space-y-2 md:col-span-2">
-                  <label className="block text-sm font-bold text-navy-500">
+                  <label className="block text-xs font-bold text-navy-500 uppercase tracking-wider">
                     Service Needed <span className="text-red-500">*</span>
                   </label>
                   <select
                     value={formData.service_needed}
                     onChange={(e) => setFormData({ ...formData, service_needed: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm bg-white"
+                    className="input-healthcare bg-white"
                   >
                     <option value="General Outpatient / Medical Consultation">General Outpatient / Medical Consultation</option>
                     <option value="Obstetrics & Gynaecology">Obstetrics & Gynaecology</option>
@@ -177,33 +178,33 @@ export const AppointmentPage: React.FC = () => {
 
                 {/* Preferred Date */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-bold text-navy-500">
+                  <label className="block text-xs font-bold text-navy-500 uppercase tracking-wider">
                     Preferred Date (Requested)
                   </label>
                   <input
                     type="date"
                     value={formData.preferred_date}
                     onChange={(e) => setFormData({ ...formData, preferred_date: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm bg-white"
+                    className="input-healthcare bg-white"
                   />
                 </div>
 
                 {/* Preferred Time */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-bold text-navy-500">
+                  <label className="block text-xs font-bold text-navy-500 uppercase tracking-wider">
                     Preferred Time (Requested)
                   </label>
                   <input
                     type="time"
                     value={formData.preferred_time}
                     onChange={(e) => setFormData({ ...formData, preferred_time: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm bg-white"
+                    className="input-healthcare bg-white"
                   />
                 </div>
 
                 {/* Message / Reason */}
                 <div className="space-y-2 md:col-span-2">
-                  <label className="block text-sm font-bold text-navy-500">
+                  <label className="block text-xs font-bold text-navy-500 uppercase tracking-wider">
                     Message / Reason for Visit <span className="text-red-500">*</span>
                   </label>
                   <textarea
@@ -212,7 +213,7 @@ export const AppointmentPage: React.FC = () => {
                     placeholder="Briefly describe your symptoms or reason for appointment..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm"
+                    className="input-healthcare"
                   ></textarea>
                 </div>
 
@@ -226,7 +227,7 @@ export const AppointmentPage: React.FC = () => {
                       onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
                       className="mt-1 w-4 h-4 text-teal-600 rounded border-slate-300 focus:ring-teal-500"
                     />
-                    <span className="text-slate-700 text-xs sm:text-sm leading-relaxed">
+                    <span className="text-slate-700 text-xs sm:text-sm leading-relaxed font-normal">
                       I consent to Starlight Hospital contacting me via phone or SMS using the information provided to process my appointment request. <span className="text-red-500">*</span>
                     </span>
                   </label>
@@ -239,14 +240,14 @@ export const AppointmentPage: React.FC = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-teal-500 text-white font-bold text-base hover:bg-teal-600 transition-all shadow-md disabled:opacity-50"
+                  className="w-full sm:w-auto btn-teal text-xs uppercase tracking-wider"
                 >
-                  <Calendar className="w-5 h-5" />
+                  <Calendar className="w-4 h-4" />
                   {submitting ? 'Submitting Request...' : 'SUBMIT APPOINTMENT REQUEST'}
                 </button>
 
-                <div className="text-xs text-slate-500">
-                  Or call directly: <a href="tel:08053587646" className="text-teal-600 font-bold">08053587646</a>
+                <div className="text-xs text-slate-500 font-medium">
+                  Or call directly: <a href="tel:08053587646" className="text-teal-600 font-bold hover:underline">08053587646</a>
                 </div>
               </div>
 
@@ -258,19 +259,19 @@ export const AppointmentPage: React.FC = () => {
 
       {/* Hospital Location Summary */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6">
-        <div className="bg-slate-100 rounded-2xl p-6 border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="bg-slate-100/90 rounded-2xl p-6 border border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
           <div className="flex items-start gap-3">
             <MapPin className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
             <div className="text-xs sm:text-sm text-slate-700">
-              <span className="font-bold text-navy-500 block">Starlight Hospital Address</span>
+              <span className="font-extrabold text-navy-500 block uppercase tracking-wider text-xs">Starlight Hospital Address</span>
               Block A Plot 6 & 19, Jajo Phase 2, Crystal Estate, along Imowo-Nla Road, Jajo, Ikorodu, Lagos.
             </div>
           </div>
           <a
             href="tel:08053587646"
-            className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-navy-500 text-white text-xs font-bold whitespace-nowrap"
+            className="btn-primary text-xs uppercase tracking-wider whitespace-nowrap"
           >
-            <Phone className="w-3.5 h-3.5 text-gold-500" /> 08053587646
+            <Phone className="w-3.5 h-3.5 text-gold-400" /> 08053587646
           </a>
         </div>
       </section>
