@@ -4,7 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import { 
   LayoutDashboard, FileText, Tag, Image, FileSpreadsheet, Stethoscope, 
   Calendar, MessageSquare, Settings, Users, Search, ShieldAlert, LogOut, 
-  Shield, ExternalLink, Menu, X, ChevronRight 
+  ExternalLink, Menu, X, ChevronRight 
 } from 'lucide-react';
 
 export const AdminLayout: React.FC = () => {
@@ -42,9 +42,7 @@ export const AdminLayout: React.FC = () => {
       {/* Mobile Top Header */}
       <div className="md:hidden bg-navy-500 text-white p-4 flex items-center justify-between sticky top-0 z-50 shadow-md">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-gold-500 text-navy-900 font-bold flex items-center justify-center shadow-xs">
-            <Shield className="w-4 h-4" />
-          </div>
+          <img src="/starlight-logo.png" alt="Starlight Logo" className="w-8 h-8 object-contain bg-white rounded-full p-0.5 shadow-xs" />
           <div>
             <h2 className="font-extrabold text-white text-xs leading-none tracking-tight">STARLIGHT CMS</h2>
             <span className="text-[9px] font-bold text-gold-400 uppercase tracking-widest">{userRole}</span>
@@ -79,9 +77,7 @@ export const AdminLayout: React.FC = () => {
           {/* Logo & Branding */}
           <div className="flex items-center justify-between border-b border-navy-600/80 pb-5">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-gold-500 text-navy-900 font-extrabold flex items-center justify-center shadow-sm">
-                <Shield className="w-5 h-5" />
-              </div>
+              <img src="/starlight-logo.png" alt="Starlight Logo" className="w-10 h-10 object-contain bg-white rounded-full p-0.5 shadow-sm" />
               <div>
                 <h2 className="font-extrabold text-white text-sm leading-none tracking-tight">STARLIGHT CMS</h2>
                 <span className="text-[10px] font-extrabold text-gold-400 uppercase tracking-widest font-mono">DEO MEDICE ADMIN</span>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { loginAdminApi } from '../../services/api';
-import { Shield, Lock, Mail, AlertCircle } from 'lucide-react';
+import { Lock, Mail, AlertCircle } from 'lucide-react';
 
 export const AdminLogin: React.FC = () => {
   const [email, setEmail] = useState('admin@starlight.com');
@@ -35,10 +35,12 @@ export const AdminLogin: React.FC = () => {
       
       <div className="max-w-md w-full bg-white rounded-3xl p-8 sm:p-10 shadow-2xl space-y-8 border border-slate-200/80 relative z-10">
         
-        <div className="text-center space-y-2">
-          <div className="w-16 h-16 rounded-2xl bg-navy-500 text-gold-400 flex items-center justify-center mx-auto shadow-md border border-navy-600">
-            <Shield className="w-8 h-8" />
-          </div>
+        <div className="text-center space-y-3">
+          <img 
+            src="/starlight-logo.png" 
+            alt="Starlight Hospital Official Logo" 
+            className="w-20 h-20 object-contain mx-auto bg-white rounded-full p-1 shadow-md border border-slate-100"
+          />
           <h1 className="text-2xl font-extrabold text-navy-500 tracking-tight">Starlight Hospital CMS</h1>
           <p className="text-xs font-bold text-gold-600 tracking-widest uppercase font-mono">DEO MEDICE • ADMIN LOGIN</p>
         </div>

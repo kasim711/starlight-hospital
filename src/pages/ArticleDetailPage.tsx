@@ -5,6 +5,8 @@ import { Article } from '../types';
 import { 
   Clock, Calendar, CheckCircle, ArrowLeft, ArrowRight, Phone, AlertCircle, Shield 
 } from 'lucide-react';
+import { HealthcareImage } from '../components/HealthcareImage';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export const ArticleDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -12,6 +14,9 @@ export const ArticleDetailPage: React.FC = () => {
   const [related, setRelated] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const heroRef = useScrollReveal();
+  const contentRef = useScrollReveal();
 
   useEffect(() => {
     if (!slug) return;
@@ -56,7 +61,7 @@ export const ArticleDetailPage: React.FC = () => {
   return (
     <div className="space-y-12 pb-16 font-sans">
       {/* Article Header & Breadcrumbs */}
-      <section className="bg-navy-500 text-white py-12 md:py-16 relative overflow-hidden">
+      <section ref={heroRef} className="bg-navy-500 text-white py-12 md:py-16 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#C49A4A_1px,transparent_1px)] [background-size:20px_20px]"></div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-4 relative z-10">
           
@@ -103,14 +108,15 @@ export const ArticleDetailPage: React.FC = () => {
       </section>
 
       {/* Main Article Container */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 space-y-8">
+      <section ref={contentRef} className="max-w-4xl mx-auto px-4 sm:px-6 space-y-8">
         
         {/* Featured Image */}
         <div className="rounded-3xl overflow-hidden shadow-card border border-slate-200/80">
-          <img
+          <HealthcareImage
             src={article.featured_image}
             alt={article.image_alt || article.title}
-            className="w-full max-h-[460px] object-cover"
+            aspectRatio="h-[420px]"
+            containerClassName="rounded-3xl"
           />
         </div>
 
@@ -167,7 +173,7 @@ export const ArticleDetailPage: React.FC = () => {
             <h3 className="text-2xl font-extrabold text-navy-500 tracking-tight">Related Health Articles</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {related.map((rel) => (
-                <div key={rel.id} className="healthcare-card p-5 space-y-3 flex flex-col justify-between group">
+                <div key={rel.id} className="healthcare-card p-5 space-y-3 flex flex-col justify-between group hover-lift">
                   <div className="space-y-2">
                     <h4 className="font-extrabold text-navy-500 text-base line-clamp-2 group-hover:text-teal-600 transition-colors">
                       <Link to={`/health-information/${rel.slug}`}>

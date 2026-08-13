@@ -3,16 +3,23 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import { servicesData } from '../data/services';
 import { 
   Stethoscope, HeartPulse, Baby, Activity, BookOpenCheck, Microscope, 
-  CheckCircle2, HelpCircle, Phone, Calendar, ArrowLeft, ShieldCheck 
+  CheckCircle2, HelpCircle, Phone, Calendar, ArrowLeft, ShieldCheck, ArrowRight 
 } from 'lucide-react';
+import { HealthcareImage } from '../components/HealthcareImage';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export const ServiceDetailPage: React.FC = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
   const service = servicesData.find((s) => s.id === serviceId);
 
+  const heroRef = useScrollReveal();
+  const contentRef = useScrollReveal();
+
   if (!service) {
     return <Navigate to="/services" replace />;
   }
+
+  const otherServices = servicesData.filter(s => s.id !== serviceId).slice(0, 3);
 
   const getServiceIcon = (iconName: string) => {
     switch (iconName) {
@@ -30,7 +37,7 @@ export const ServiceDetailPage: React.FC = () => {
     <div className="space-y-16 pb-16 font-sans">
       
       {/* Hero Header */}
-      <section className="bg-navy-500 text-white py-16 md:py-20 relative overflow-hidden">
+      <section ref={heroRef} className="bg-navy-500 text-white py-16 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#C49A4A_1px,transparent_1px)] [background-size:20px_20px]"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 relative z-10">
           <Link
@@ -57,12 +64,22 @@ export const ServiceDetailPage: React.FC = () => {
       </section>
 
       {/* Service Content Container */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section ref={contentRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           
           {/* Main Copy Area */}
           <div className="lg:col-span-8 space-y-10">
             
+            {/* Service Featured Image */}
+            <div className="rounded-3xl overflow-hidden shadow-lg border border-slate-200/80">
+              <HealthcareImage
+                src={service.image}
+                alt={service.title}
+                aspectRatio="h-[360px]"
+                containerClassName="rounded-3xl"
+              />
+            </div>
+
             {/* Service Overview */}
             <div className="healthcare-card p-8 space-y-4">
               <h2 className="text-2xl font-extrabold text-navy-500 flex items-center gap-2.5 tracking-tight">
@@ -118,6 +135,23 @@ export const ServiceDetailPage: React.FC = () => {
                 </div>
               </div>
             )}
+
+            {/* Related Services */}
+            <div className="space-y-6 pt-4">
+              <h3 className="text-xl font-extrabold text-navy-500 tracking-tight">Other Clinical Services</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {otherServices.map(s => (
+                  <Link 
+                    key={s.id} 
+                    to={`/services/${s.id}`} 
+                    className="p-5 rounded-2xl bg-white border border-slate-200/80 hover:border-teal-500 hover:shadow-md transition-all space-y-2 group"
+                  >
+                    <h4 className="font-bold text-navy-500 text-sm group-hover:text-teal-600 transition-colors">{s.title}</h4>
+                    <p className="text-xs text-slate-500 line-clamp-2">{s.shortDesc}</p>
+                  </Link>
+                ))}
+              </div>
+            </div>
 
           </div>
 

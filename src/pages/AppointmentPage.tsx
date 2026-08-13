@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { submitAppointmentRequest } from '../services/api';
 import { Phone, Calendar, CheckCircle2, AlertTriangle, ShieldCheck, MapPin, User, Mail, Clock, FileText } from 'lucide-react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export const AppointmentPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +17,10 @@ export const AppointmentPage: React.FC = () => {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const heroRef = useScrollReveal();
+  const formRef = useScrollReveal();
+  const locationRef = useScrollReveal();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,12 +50,13 @@ export const AppointmentPage: React.FC = () => {
   return (
     <div className="space-y-16 pb-16 font-sans">
       {/* Hero Header */}
-      <section className="bg-navy-500 text-white py-16 md:py-20 relative overflow-hidden">
+      <section ref={heroRef} className="bg-navy-500 text-white py-16 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#C49A4A_1px,transparent_1px)] [background-size:20px_20px]"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 relative z-10">
-          <span className="badge-gold">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-gold-400 text-xs font-extrabold tracking-wider uppercase backdrop-blur-md shadow-sm">
+            <img src="/starlight-logo.png" alt="Starlight Logo" className="w-5 h-5 object-contain bg-white rounded-full p-0.5" />
             APPOINTMENT REQUEST FORM
-          </span>
+          </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
             Request an Appointment
           </h1>
@@ -61,7 +67,7 @@ export const AppointmentPage: React.FC = () => {
       </section>
 
       {/* Main Container */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6">
+      <section ref={formRef} className="max-w-4xl mx-auto px-4 sm:px-6">
         <div className="bg-white rounded-3xl border border-slate-200/80 shadow-card p-6 sm:p-12">
           
           {submitted ? (
@@ -258,7 +264,7 @@ export const AppointmentPage: React.FC = () => {
       </section>
 
       {/* Hospital Location Summary */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6">
+      <section ref={locationRef} className="max-w-4xl mx-auto px-4 sm:px-6">
         <div className="bg-slate-100/90 rounded-2xl p-6 border border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
           <div className="flex items-start gap-3">
             <MapPin className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />

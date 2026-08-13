@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, MapPin, Shield, Heart, ArrowUpRight, Lock } from 'lucide-react';
-import { fetchServices } from '../services/api';
+import { Phone, MapPin, ArrowRight, Lock, ShieldCheck } from 'lucide-react';
 
 export const Footer: React.FC = () => {
-  const [services, setServices] = useState<any[]>([]);
   const [settings, setSettings] = useState<{ [key: string]: string }>({
     hospital_name: 'Starlight Hospital',
     motto: 'DEO MEDICE',
     phone_primary: '08053587646',
     phone_secondary: '07079333090',
-    address: 'Block A Plot 6 & 19, Jajo Phase 2, Crystal Estate, along Imowo-Nla Road, Jajo, Ikorodu, Lagos.',
-    footer_microcopy: 'Starlight Hospital - DEO MEDICE. Healthcare services for individuals and families in Jajo, Ikorodu, Lagos.'
+    address: 'Block A Plot 6 & 19, Jajo Phase 2, Crystal Estate, along Imowo-Nla Road, Jajo, Ikorodu, Lagos.'
   });
 
   useEffect(() => {
@@ -19,12 +16,6 @@ export const Footer: React.FC = () => {
       .then(res => res.json())
       .then(d => {
         if (d.settings) setSettings(prev => ({ ...prev, ...d.settings }));
-      })
-      .catch(err => console.error(err));
-
-    fetchServices()
-      .then(d => {
-        if (d.services) setServices(d.services);
       })
       .catch(err => console.error(err));
   }, []);
@@ -35,107 +26,147 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-navy-500 text-white font-sans border-t border-navy-600">
       
-      {/* Upper Footer Branding & Quick Links */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      {/* Top Banner Disclaimer Notice */}
+      <div className="bg-navy-600/80 border-b border-navy-600 py-3 px-4 text-center text-xs text-slate-300">
+        <div className="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap">
+          <ShieldCheck className="w-4 h-4 text-gold-400 flex-shrink-0" />
+          <span>General medical & clinical services in Jajo, Ikorodu, Lagos. <strong className="text-gold-400 font-extrabold">DEO MEDICE</strong>.</span>
+        </div>
+      </div>
+
+      {/* Main 4-Column Footer */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           
-          {/* Col 1: Hospital Profile */}
+          {/* Column 1: Hospital Branding */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gold-500 text-navy-900 flex items-center justify-center font-bold shadow-sm">
-                <Shield className="w-6 h-6" />
-              </div>
+              <img 
+                src="/starlight-logo.png" 
+                alt="Starlight Hospital Official Logo" 
+                className="w-12 h-12 object-contain bg-white rounded-full p-0.5 shadow-sm"
+              />
               <div>
-                <h3 className="font-extrabold text-lg tracking-tight leading-none text-white">{settings.hospital_name}</h3>
-                <span className="text-[11px] font-extrabold text-gold-500 tracking-widest uppercase font-mono">{settings.motto}</span>
+                <h3 className="font-extrabold text-white text-lg tracking-tight">{settings.hospital_name}</h3>
+                <span className="text-[10px] font-extrabold text-gold-400 uppercase tracking-widest font-mono">
+                  {settings.motto}
+                </span>
               </div>
             </div>
             
             <p className="text-xs text-slate-300 leading-relaxed font-normal">
-              {settings.footer_microcopy}
+              Starlight Hospital provides accessible, patient-centered clinical healthcare services for individuals and families in Jajo, Ikorodu, Lagos.
             </p>
 
             <div className="pt-2">
-              <Link
+              <Link 
                 to="/appointment"
-                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-teal-500 text-white text-xs font-bold uppercase tracking-wider hover:bg-teal-600 transition-colors shadow-md"
+                className="btn-gold text-xs py-2.5 px-4"
               >
-                Request Appointment <ArrowUpRight className="w-3.5 h-3.5" />
+                Book Appointment Request <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
           </div>
 
-          {/* Col 2: Core Services */}
+          {/* Column 2: Quick Navigation */}
           <div className="space-y-3">
-            <h4 className="font-bold text-xs uppercase tracking-widest text-gold-500 border-b border-navy-600/80 pb-2">Clinical Services</h4>
-            <ul className="space-y-2 text-xs text-slate-300">
-              {services.map((s) => (
-                <li key={s.service_id}>
-                  <Link to={`/services/${s.service_id}`} className="hover:text-teal-400 transition-colors flex items-center gap-1.5">
-                    <span className="text-teal-500 font-bold">•</span> {s.title}
-                  </Link>
-                </li>
-              ))}
+            <h4 className="text-xs font-extrabold uppercase tracking-widest text-gold-400">Website Navigation</h4>
+            <ul className="space-y-2 text-xs font-medium text-slate-300">
+              <li>
+                <Link to="/" className="hover:text-gold-400 transition-colors inline-block py-0.5">Home</Link>
+              </li>
+              <li>
+                <Link to="/about" className="hover:text-gold-400 transition-colors inline-block py-0.5">About Starlight Hospital</Link>
+              </li>
+              <li>
+                <Link to="/services" className="hover:text-gold-400 transition-colors inline-block py-0.5">Clinical Services Catalog</Link>
+              </li>
+              <li>
+                <Link to="/health-information" className="hover:text-gold-400 transition-colors inline-block py-0.5">Health Information Hub</Link>
+              </li>
+              <li>
+                <Link to="/appointment" className="hover:text-gold-400 transition-colors inline-block py-0.5">Appointment Request</Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-gold-400 transition-colors inline-block py-0.5">Contact Hospital</Link>
+              </li>
             </ul>
           </div>
 
-          {/* Col 3: Quick Navigation */}
+          {/* Column 3: Clinical Services Overview */}
           <div className="space-y-3">
-            <h4 className="font-bold text-xs uppercase tracking-widest text-gold-500 border-b border-navy-600/80 pb-2">Website Navigation</h4>
-            <ul className="space-y-2 text-xs text-slate-300">
-              <li><Link to="/" className="hover:text-teal-400 transition-colors">Home Page</Link></li>
-              <li><Link to="/about" className="hover:text-teal-400 transition-colors">About Starlight Hospital</Link></li>
-              <li><Link to="/services" className="hover:text-teal-400 transition-colors">Services Overview</Link></li>
-              <li><Link to="/health-information" className="hover:text-teal-400 transition-colors">Health Information Hub</Link></li>
-              <li><Link to="/contact" className="hover:text-teal-400 transition-colors">Contact Us</Link></li>
-              <li><Link to="/appointment" className="hover:text-teal-400 transition-colors">Request an Appointment</Link></li>
-              <li><Link to="/privacy-policy" className="hover:text-teal-400 transition-colors">Privacy Policy</Link></li>
-              <li><Link to="/terms-disclaimer" className="hover:text-teal-400 transition-colors">Terms & Disclaimer</Link></li>
+            <h4 className="text-xs font-extrabold uppercase tracking-widest text-gold-400">Clinical Focus Areas</h4>
+            <ul className="space-y-2 text-xs font-medium text-slate-300">
+              <li>
+                <Link to="/services/general-outpatient" className="hover:text-gold-400 transition-colors inline-block py-0.5">General Medical Consultation</Link>
+              </li>
+              <li>
+                <Link to="/services/obstetrics-gynaecology" className="hover:text-gold-400 transition-colors inline-block py-0.5">Obstetrics & Gynaecology</Link>
+              </li>
+              <li>
+                <Link to="/services/paediatrics" className="hover:text-gold-400 transition-colors inline-block py-0.5">Paediatrics Care</Link>
+              </li>
+              <li>
+                <Link to="/services/surgery" className="hover:text-gold-400 transition-colors inline-block py-0.5">Surgical Procedures</Link>
+              </li>
+              <li>
+                <Link to="/services/health-education-counseling" className="hover:text-gold-400 transition-colors inline-block py-0.5">Health Education & Counselling</Link>
+              </li>
+              <li>
+                <Link to="/services/laboratory-diagnostic" className="hover:text-gold-400 transition-colors inline-block py-0.5">Laboratory & Diagnostics</Link>
+              </li>
             </ul>
           </div>
 
-          {/* Col 4: Contact & Location */}
-          <div className="space-y-3">
-            <h4 className="font-bold text-xs uppercase tracking-widest text-gold-500 border-b border-navy-600/80 pb-2">Location & Contact</h4>
+          {/* Column 4: Contact & Location */}
+          <div className="space-y-4">
+            <h4 className="text-xs font-extrabold uppercase tracking-widest text-gold-400">Contact & Address</h4>
+            
             <div className="space-y-3 text-xs text-slate-300">
               <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-gold-400 flex-shrink-0 mt-0.5" />
                 <span className="leading-relaxed">{settings.address}</span>
               </div>
+
               <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-teal-400 flex-shrink-0" />
-                <div className="flex flex-col gap-0.5">
-                  <a href={phoneLink1} className="hover:text-gold-500 font-bold transition-colors">{settings.phone_primary}</a>
-                  <a href={phoneLink2} className="hover:text-gold-500 font-bold transition-colors">{settings.phone_secondary}</a>
+                <Phone className="w-4 h-4 text-gold-400 flex-shrink-0" />
+                <div className="flex flex-wrap gap-1 font-semibold text-white">
+                  <a href={phoneLink1} className="hover:text-gold-400 transition-colors">{settings.phone_primary}</a>
+                  <span>/</span>
+                  <a href={phoneLink2} className="hover:text-gold-400 transition-colors">{settings.phone_secondary}</a>
                 </div>
               </div>
             </div>
+
+            {/* Staff CMS Portal Access */}
+            <div className="pt-3 border-t border-navy-600/80">
+              <Link 
+                to="/admin/login" 
+                className="inline-flex items-center gap-1.5 text-[11px] font-bold text-slate-400 hover:text-gold-400 transition-colors"
+              >
+                <Lock className="w-3 h-3 text-gold-400" /> Staff CMS Portal Access
+              </Link>
+            </div>
+
           </div>
 
         </div>
       </div>
 
-      {/* Mandatory Medical Disclaimer Banner */}
-      <div className="bg-navy-600/80 py-4 px-4 border-t border-navy-600 text-slate-300 text-xs leading-relaxed">
-        <div className="max-w-7xl mx-auto flex items-start gap-3">
-          <Heart className="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5" />
-          <p className="text-[11px] text-slate-300 leading-relaxed">
-            <strong className="text-white">Medical Disclaimer:</strong> The health information published on this website is provided for general educational purposes and is not a substitute for an examination, diagnosis, or personalised medical advice from a qualified healthcare professional. Always consult a healthcare provider for symptoms or medical concerns.
-          </p>
-        </div>
-      </div>
-
-      {/* Copyright Bar */}
-      <div className="bg-navy-700 py-4 px-4 text-center text-[11px] text-slate-400 border-t border-navy-600">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-          <span>© {new Date().getFullYear()} Starlight Hospital. Motto: <strong className="text-gold-500 font-mono">DEO MEDICE</strong>. All rights reserved.</span>
-          <div className="flex items-center gap-4">
-            <Link to="/privacy-policy" className="hover:text-slate-200 transition-colors">Privacy Policy</Link>
-            <Link to="/terms-disclaimer" className="hover:text-slate-200 transition-colors">Terms & Disclaimer</Link>
-            <Link to="/admin/login" className="text-slate-400 hover:text-gold-400 font-semibold transition-colors flex items-center gap-1">
-              <Lock className="w-3 h-3 text-gold-500" /> Staff CMS Login
-            </Link>
+      {/* Bottom Copyright & Legal Links */}
+      <div className="border-t border-navy-600 bg-navy-600/50 py-6 px-4 text-xs text-slate-400">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          
+          <div className="space-y-1">
+            <p>© {new Date().getFullYear()} Starlight Hospital — DEO MEDICE. All Rights Reserved.</p>
+            <p className="text-[11px] text-slate-400">Jajo, Ikorodu, Lagos, Nigeria.</p>
           </div>
+
+          <div className="flex items-center gap-6 font-medium">
+            <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
+          </div>
+
         </div>
       </div>
 

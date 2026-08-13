@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Phone, MapPin, Menu, X, Shield, ChevronDown, Stethoscope, ArrowRight } from 'lucide-react';
+import { Phone, MapPin, Menu, X, ChevronDown, Stethoscope, ArrowRight } from 'lucide-react';
 import { fetchServices } from '../services/api';
 
 export const Header: React.FC = () => {
@@ -51,7 +51,7 @@ export const Header: React.FC = () => {
 
   return (
     <header className={`w-full sticky top-0 z-50 font-sans transition-all duration-300 ${
-      scrolled ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-slate-200/80' : 'bg-white border-b border-slate-200'
+      scrolled ? 'glass-nav shadow-md border-b border-slate-200/80 py-0.5' : 'bg-white border-b border-slate-200 py-0'
     }`}>
       
       {/* Top Utility & Emergency Bar */}
@@ -60,7 +60,7 @@ export const Header: React.FC = () => {
           
           <div className="flex items-center gap-4 flex-wrap justify-center sm:justify-start">
             <span className="font-medium text-slate-200 flex items-center gap-1.5 text-[11px] sm:text-xs">
-              <MapPin className="w-3.5 h-3.5 text-gold-500 flex-shrink-0" />
+              <MapPin className="w-3.5 h-3.5 text-gold-400 flex-shrink-0" />
               <span className="truncate max-w-xs sm:max-w-lg">{settings.address}</span>
             </span>
           </div>
@@ -69,7 +69,7 @@ export const Header: React.FC = () => {
             <div className="flex items-center gap-2">
               <span className="text-slate-300 font-normal hidden md:inline">Contact Hospital:</span>
               <a href={phoneLink1} className="font-bold text-white hover:text-gold-400 transition-colors flex items-center gap-1">
-                <Phone className="w-3 h-3 text-gold-500 sm:hidden" /> {settings.phone_primary}
+                <Phone className="w-3 h-3 text-gold-400 sm:hidden" /> {settings.phone_primary}
               </a>
               <span className="text-slate-400">|</span>
               <a href={phoneLink2} className="font-bold text-white hover:text-gold-400 transition-colors">
@@ -85,11 +85,13 @@ export const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
-          {/* Logo & Hospital Motto */}
+          {/* Official Hospital Logo & Motto */}
           <Link to="/" onClick={closeMenus} className="flex items-center gap-3 group">
-            <div className="w-11 h-11 rounded-2xl bg-navy-500 text-white flex items-center justify-center shadow-md group-hover:bg-navy-600 transition-colors border border-navy-600">
-              <Shield className="w-6 h-6 text-gold-500" />
-            </div>
+            <img 
+              src="/starlight-logo.png" 
+              alt="Starlight Hospital Official Logo" 
+              className="w-12 h-12 object-contain group-hover:scale-105 transition-transform duration-300 flex-shrink-0"
+            />
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-xl font-extrabold text-navy-500 tracking-tight">{settings.hospital_name}</span>
@@ -142,7 +144,7 @@ export const Header: React.FC = () => {
               </Link>
 
               {isServicesOpen && (
-                <div className="absolute top-full left-0 w-84 bg-white rounded-2xl shadow-xl border border-slate-200/80 py-3 z-50 font-sans animate-in fade-in slide-in-from-top-2 duration-200">
+                <div className="absolute top-full left-0 w-84 bg-white rounded-2xl shadow-xl border border-slate-200/80 py-3 z-50 font-sans transition-all duration-200">
                   <div className="px-4 py-2 text-[11px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100 flex items-center justify-between">
                     <span>Clinical Services</span>
                     <Stethoscope className="w-3.5 h-3.5 text-teal-600" />
@@ -208,7 +210,7 @@ export const Header: React.FC = () => {
 
             <Link
               to="/appointment"
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-teal-500 text-white font-bold text-xs uppercase tracking-wider hover:bg-teal-600 active:scale-[0.99] transition-all shadow-md hover:shadow-lg"
+              className="btn-teal text-xs uppercase tracking-wider py-2.5 px-5"
             >
               Request Appointment
             </Link>
@@ -230,7 +232,7 @@ export const Header: React.FC = () => {
 
       {/* Mobile Drawer Navigation */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-slate-200 px-5 pt-3 pb-7 space-y-4 font-sans animate-in slide-in-from-top-2 duration-200 shadow-xl">
+        <div className="lg:hidden bg-white border-b border-slate-200 px-5 pt-3 pb-7 space-y-4 font-sans shadow-xl">
           <Link 
             to="/" 
             onClick={closeMenus} 

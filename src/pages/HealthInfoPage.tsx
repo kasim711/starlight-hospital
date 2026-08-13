@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { fetchArticles, fetchCategories } from '../services/api';
 import { Article, Category } from '../types';
 import { Search, Clock, ArrowRight, BookOpen, AlertCircle } from 'lucide-react';
+import { HealthcareImage } from '../components/HealthcareImage';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export const HealthInfoPage: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);
@@ -10,6 +12,10 @@ export const HealthInfoPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [loading, setLoading] = useState(true);
+
+  const heroRef = useScrollReveal();
+  const filterRef = useScrollReveal();
+  const contentRef = useScrollReveal();
 
   useEffect(() => {
     fetchCategories()
@@ -42,12 +48,13 @@ export const HealthInfoPage: React.FC = () => {
     <div className="space-y-16 pb-16 font-sans">
       
       {/* Hero Header */}
-      <section className="bg-navy-500 text-white py-16 md:py-20 relative overflow-hidden">
+      <section ref={heroRef} className="bg-navy-500 text-white py-16 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#C49A4A_1px,transparent_1px)] [background-size:20px_20px]"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 relative z-10">
-          <span className="badge-gold">
-            HEALTH EDUCATION HUB
-          </span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-gold-400 text-xs font-extrabold tracking-wider uppercase backdrop-blur-md shadow-sm">
+            <img src="/starlight-logo.png" alt="Starlight Logo" className="w-5 h-5 object-contain bg-white rounded-full p-0.5" />
+            HEALTH EDUCATION KNOWLEDGE HUB
+          </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
             Health Information for You and Your Family
           </h1>
@@ -58,7 +65,7 @@ export const HealthInfoPage: React.FC = () => {
       </section>
 
       {/* Search & Category Filters */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <section ref={filterRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm">
           {/* Search Bar */}
           <div className="relative w-full md:w-96">
@@ -102,7 +109,7 @@ export const HealthInfoPage: React.FC = () => {
       </section>
 
       {/* Main Articles Area */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section ref={contentRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[1, 2, 3].map(n => (
@@ -120,12 +127,12 @@ export const HealthInfoPage: React.FC = () => {
             
             {/* Featured Article Card */}
             {featuredArticle && !selectedCategory && !searchQuery && (
-              <div className="healthcare-card overflow-hidden grid grid-cols-1 lg:grid-cols-12 group">
+              <div className="healthcare-card overflow-hidden grid grid-cols-1 lg:grid-cols-12 group hover-lift">
                 <div className="lg:col-span-7 relative h-72 lg:h-auto overflow-hidden">
-                  <img
+                  <HealthcareImage
                     src={featuredArticle.featured_image}
                     alt={featuredArticle.image_alt || featuredArticle.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    aspectRatio="h-full w-full"
                   />
                   <span className="absolute top-4 left-4 bg-teal-500 text-white font-bold text-xs uppercase tracking-wider px-3 py-1 rounded-md shadow-md">
                     Featured Article
@@ -162,14 +169,14 @@ export const HealthInfoPage: React.FC = () => {
               {(featuredArticle && !selectedCategory && !searchQuery ? remainingArticles : articles).map((art) => (
                 <article
                   key={art.id}
-                  className="healthcare-card overflow-hidden flex flex-col justify-between group"
+                  className="reveal-stagger-item healthcare-card overflow-hidden flex flex-col justify-between group hover-lift"
                 >
                   <div>
                     <div className="relative h-52 overflow-hidden">
-                      <img
+                      <HealthcareImage
                         src={art.featured_image}
                         alt={art.image_alt || art.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        aspectRatio="h-full w-full"
                       />
                       <span className="absolute top-3 left-3 bg-navy-500/95 text-white text-xs font-bold px-3 py-1 rounded-md backdrop-blur-md shadow-sm">
                         {art.category}

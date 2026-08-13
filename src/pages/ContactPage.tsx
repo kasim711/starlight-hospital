@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { submitContactEnquiry } from '../services/api';
 import { Phone, MapPin, Mail, Send, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +17,10 @@ export const ContactPage: React.FC = () => {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const heroRef = useScrollReveal();
+  const gridRef = useScrollReveal();
+  const mapRef = useScrollReveal();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,12 +50,13 @@ export const ContactPage: React.FC = () => {
   return (
     <div className="space-y-16 pb-16 font-sans">
       {/* Hero Header */}
-      <section className="bg-navy-500 text-white py-16 md:py-20 relative overflow-hidden">
+      <section ref={heroRef} className="bg-navy-500 text-white py-16 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#C49A4A_1px,transparent_1px)] [background-size:20px_20px]"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 relative z-10">
-          <span className="badge-gold">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-gold-400 text-xs font-extrabold tracking-wider uppercase backdrop-blur-md shadow-sm">
+            <img src="/starlight-logo.png" alt="Starlight Logo" className="w-5 h-5 object-contain bg-white rounded-full p-0.5" />
             CONTACT STARLIGHT HOSPITAL
-          </span>
+          </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
             Contact Starlight Hospital
           </h1>
@@ -61,7 +67,7 @@ export const ContactPage: React.FC = () => {
       </section>
 
       {/* Main Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section ref={gridRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           
           {/* Left Column: Hospital Contact Details */}
@@ -293,7 +299,7 @@ export const ContactPage: React.FC = () => {
       </section>
 
       {/* Google Maps Embed Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section ref={mapRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-3xl border border-slate-200/80 overflow-hidden shadow-card p-4 space-y-4">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-2 gap-2">
             <div>

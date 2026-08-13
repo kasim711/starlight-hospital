@@ -3,15 +3,27 @@ import { Link } from 'react-router-dom';
 import { 
   Phone, Calendar, MapPin, ChevronRight, Stethoscope, HeartPulse, Baby, Activity, 
   BookOpenCheck, Microscope, ShieldCheck, CheckCircle2, ArrowRight, Clock, Heart, 
-  UserCheck, Award, Sparkles 
+  UserCheck, Award, Sparkles, MessageCircle, Ear, Compass, Lightbulb, Users
 } from 'lucide-react';
 import { servicesData } from '../data/services';
 import { fetchArticles } from '../services/api';
 import { Article } from '../types';
+import { HealthcareImage } from '../components/HealthcareImage';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export const HomePage: React.FC = () => {
   const [recentArticles, setRecentArticles] = useState<Article[]>([]);
   const [loadingArticles, setLoadingArticles] = useState(true);
+
+  const heroRef = useScrollReveal();
+  const trustRef = useScrollReveal();
+  const servicesRef = useScrollReveal();
+  const aboutRef = useScrollReveal();
+  const experienceRef = useScrollReveal();
+  const whyRef = useScrollReveal();
+  const articlesRef = useScrollReveal();
+  const locationRef = useScrollReveal();
+  const ctaRef = useScrollReveal();
 
   useEffect(() => {
     fetchArticles(undefined, undefined)
@@ -40,21 +52,48 @@ export const HomePage: React.FC = () => {
     { title: 'Accessible Healthcare', desc: 'Convenient local medical consultation and care for individuals and families in Jajo, Ikorodu.', icon: <MapPin className="w-6 h-6 text-teal-600" /> },
     { title: 'Family-Focused Care', desc: 'Comprehensive medical assessment supporting mothers, infants, children, adults, and seniors.', icon: <Heart className="w-6 h-6 text-teal-600" /> },
     { title: 'Patient-Centered Approach', desc: 'Respectful, individualised healthcare guidance tailored to your specific clinical needs.', icon: <UserCheck className="w-6 h-6 text-teal-600" /> },
-    { title: 'Professional Medical Services', desc: 'Outpatient consultation, paediatrics, O&G, surgery, diagnostics, and health education under one roof.', icon: <ShieldCheck className="w-6 h-6 text-teal-600" /> }
+    { title: 'Quality Diagnostics', desc: 'Outpatient consultation, paediatrics, O&G, surgery, diagnostics, and health education.', icon: <ShieldCheck className="w-6 h-6 text-teal-600" /> }
+  ];
+
+  const experienceSteps = [
+    {
+      number: '01',
+      title: 'Listening',
+      desc: 'We take the time to hear your medical history, symptoms, and individual health concerns attentively.',
+      icon: <Ear className="w-6 h-6 text-teal-600" />
+    },
+    {
+      number: '02',
+      title: 'Understanding',
+      desc: 'Our clinical staff evaluates your situation thoroughly to gain a complete diagnostic picture.',
+      icon: <Compass className="w-6 h-6 text-teal-600" />
+    },
+    {
+      number: '03',
+      title: 'Explaining',
+      desc: 'We provide clear, easy-to-understand explanations of test results, options, and recommended next steps.',
+      icon: <Lightbulb className="w-6 h-6 text-teal-600" />
+    },
+    {
+      number: '04',
+      title: 'Supporting',
+      desc: 'Continuous compassionate care and follow-up guidance for you and your loved ones throughout recovery.',
+      icon: <Users className="w-6 h-6 text-teal-600" />
+    }
   ];
 
   return (
     <div className="space-y-20 pb-16 font-sans">
       
       {/* 1. HERO SECTION */}
-      <section className="relative hero-gradient text-white overflow-hidden py-16 md:py-24">
+      <section ref={heroRef} className="relative hero-gradient text-white overflow-hidden py-16 md:py-24">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#C49A4A_1px,transparent_1px)] [background-size:20px_20px]"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-gold-400 text-xs font-extrabold tracking-wider uppercase backdrop-blur-md shadow-sm">
-                <ShieldCheck className="w-4 h-4 text-gold-400" />
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-gold-400 text-xs font-extrabold tracking-wider uppercase backdrop-blur-md shadow-sm">
+                <img src="/starlight-logo.png" alt="Starlight Hospital Official Logo" className="w-5 h-5 object-contain bg-white rounded-full p-0.5" />
                 STARLIGHT HOSPITAL • DEO MEDICE
               </div>
               
@@ -102,17 +141,16 @@ export const HomePage: React.FC = () => {
             {/* Hero Visual Composition Card */}
             <div className="lg:col-span-5 hidden lg:block">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 group">
-                <img
+                <HealthcareImage
                   src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1000"
                   alt="Starlight Hospital Healthcare Team in Jajo Ikorodu"
-                  className="w-full h-[460px] object-cover group-hover:scale-105 transition-transform duration-500"
+                  aspectRatio="h-[460px]"
+                  containerClassName="rounded-3xl"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/30 to-transparent p-6 flex flex-col justify-end">
                   <div className="bg-white/95 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-slate-100 text-slate-800 space-y-2">
                     <div className="flex items-center gap-3">
-                      <div className="w-11 h-11 rounded-xl bg-navy-500 text-gold-500 flex items-center justify-center font-bold text-sm shadow-md">
-                        DM
-                      </div>
+                      <img src="/starlight-logo.png" alt="Starlight Logo" className="w-10 h-10 object-contain bg-white rounded-full p-0.5 shadow-sm" />
                       <div>
                         <h4 className="font-extrabold text-navy-500 text-base leading-tight">Starlight Hospital</h4>
                         <p className="text-xs font-semibold text-teal-600">Jajo, Ikorodu, Lagos • DEO MEDICE</p>
@@ -130,20 +168,20 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. TRUST & CREDIBILITY RIBBON */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 2. TRUST & CREDIBILITY HIGHLIGHT STRIP */}
+      <section ref={trustRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {trustPillars.map((pillar, idx) => (
             <div 
               key={idx} 
-              className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-card hover:shadow-card-hover transition-all duration-300 flex items-start gap-4"
+              className="reveal-stagger-item healthcare-card p-6 flex items-start gap-4 hover-lift"
             >
               <div className="w-12 h-12 rounded-xl bg-teal-50 flex items-center justify-center flex-shrink-0 border border-teal-100">
                 {pillar.icon}
               </div>
               <div className="space-y-1">
                 <h3 className="text-base font-bold text-navy-500 leading-snug">{pillar.title}</h3>
-                <p className="text-xs text-slate-600 leading-relaxed">{pillar.desc}</p>
+                <p className="text-xs text-slate-600 leading-relaxed font-normal">{pillar.desc}</p>
               </div>
             </div>
           ))}
@@ -151,7 +189,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 3. CORE SERVICES CATALOG */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <section ref={servicesRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="text-center max-w-3xl mx-auto space-y-3">
           <span className="badge-teal">CLINICAL EXCELLENCE</span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-navy-500 tracking-tight">
@@ -166,7 +204,7 @@ export const HomePage: React.FC = () => {
           {servicesData.map((service) => (
             <div
               key={service.id}
-              className="healthcare-card p-7 flex flex-col justify-between group"
+              className="reveal-stagger-item healthcare-card p-7 flex flex-col justify-between group hover-lift"
             >
               <div className="space-y-4">
                 <div className="w-14 h-14 rounded-2xl bg-teal-50 border border-teal-100 flex items-center justify-center group-hover:bg-teal-500 group-hover:border-teal-500 transition-colors duration-300">
@@ -199,8 +237,38 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. WHY STARLIGHT HOSPITAL & ABOUT SECTION */}
-      <section className="bg-navy-500 text-white py-20 relative overflow-hidden">
+      {/* 4. HEALTHCARE PATIENT EXPERIENCE FLOW */}
+      <section ref={experienceRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <div className="text-center max-w-3xl mx-auto space-y-3">
+          <span className="badge-navy">PATIENT EXPERIENCE</span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-navy-500 tracking-tight">
+            Our Human Approach to Healthcare Care
+          </h2>
+          <p className="text-slate-600 text-base">
+            We believe clinical care is most effective when built on mutual trust, active listening, clear explanations, and continuous support.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {experienceSteps.map((step, idx) => (
+            <div key={idx} className="reveal-stagger-item healthcare-card p-6 space-y-3 relative overflow-hidden group hover-lift">
+              <div className="flex items-center justify-between">
+                <div className="w-12 h-12 rounded-xl bg-navy-50 border border-navy-100 text-navy-600 flex items-center justify-center font-bold">
+                  {step.icon}
+                </div>
+                <span className="text-2xl font-extrabold text-slate-300 font-mono group-hover:text-teal-500 transition-colors">
+                  {step.number}
+                </span>
+              </div>
+              <h3 className="text-lg font-bold text-navy-500">{step.title}</h3>
+              <p className="text-xs text-slate-600 leading-relaxed font-normal">{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 5. WHY STARLIGHT HOSPITAL & ABOUT SECTION */}
+      <section ref={whyRef} className="bg-navy-500 text-white py-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
@@ -231,9 +299,7 @@ export const HomePage: React.FC = () => {
 
             <div className="lg:col-span-5">
               <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 text-white space-y-6 shadow-xl">
-                <div className="w-12 h-12 rounded-2xl bg-gold-500 text-navy-900 flex items-center justify-center font-bold text-xl shadow-md">
-                  DM
-                </div>
+                <img src="/starlight-logo.png" alt="Starlight Hospital Official Logo" className="w-16 h-16 object-contain bg-white rounded-full p-1 shadow-md" />
                 <div className="space-y-2">
                   <h3 className="text-2xl font-extrabold text-white">DEO MEDICE Motto</h3>
                   <p className="text-slate-200 text-sm leading-relaxed">
@@ -262,8 +328,8 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. ABOUT PREVIEW CARD */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 6. ABOUT PREVIEW CARD */}
+      <section ref={aboutRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/80 shadow-card grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-8 space-y-4">
             <span className="badge-teal">COMMUNITY PATIENT CARE</span>
@@ -286,11 +352,11 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. HEALTH INFORMATION PREVIEW */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      {/* 7. HEALTH INFORMATION KNOWLEDGE HUB */}
+      <section ref={articlesRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-b border-slate-200/80 pb-6">
           <div className="space-y-2 max-w-3xl">
-            <span className="badge-navy">HEALTH EDUCATION & UPDATES</span>
+            <span className="badge-navy">HEALTH EDUCATION & KNOWLEDGE CENTER</span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-navy-500 tracking-tight">
               Health Information for You and Your Family
             </h2>
@@ -315,13 +381,13 @@ export const HomePage: React.FC = () => {
         ) : recentArticles.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {recentArticles.map((art) => (
-              <article key={art.id} className="healthcare-card overflow-hidden flex flex-col justify-between group">
+              <article key={art.id} className="reveal-stagger-item healthcare-card overflow-hidden flex flex-col justify-between group hover-lift">
                 <div>
                   <div className="relative h-52 overflow-hidden">
-                    <img
+                    <HealthcareImage
                       src={art.featured_image}
                       alt={art.image_alt || art.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      aspectRatio="h-full w-full"
                     />
                     <span className="absolute top-3 left-3 bg-navy-500/95 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-md shadow-sm">
                       {art.category}
@@ -359,8 +425,8 @@ export const HomePage: React.FC = () => {
         )}
       </section>
 
-      {/* 7. LOCATION & DIRECTIONS SECTION */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 8. VISUAL LOCATION & MAP BLOCK */}
+      <section ref={locationRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-3xl border border-slate-200/80 shadow-card overflow-hidden grid grid-cols-1 lg:grid-cols-12">
           
           <div className="lg:col-span-5 p-8 sm:p-12 space-y-6 flex flex-col justify-between">
@@ -408,8 +474,8 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 8. FINAL CONVERSION BAND */}
-      <section className="bg-navy-500 text-white py-16">
+      {/* 9. FINAL CONVERSION BAND */}
+      <section ref={ctaRef} className="bg-navy-500 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
             Need to Speak With the Hospital?
