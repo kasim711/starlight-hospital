@@ -42,7 +42,7 @@ export const AdminLogin: React.FC = () => {
             className="w-20 h-20 object-contain mx-auto bg-white rounded-full p-1 shadow-md border border-slate-100"
           />
           <h1 className="text-2xl font-extrabold text-navy-500 tracking-tight">Starlight Hospital CMS</h1>
-          <p className="text-xs font-bold text-gold-600 tracking-widest uppercase font-mono">DEO MEDICE • ADMIN LOGIN</p>
+          <p className="text-xs font-extrabold text-amber-700 tracking-widest uppercase font-mono">DEO MEDICE • ADMIN LOGIN</p>
         </div>
 
         {error && (
@@ -52,41 +52,41 @@ export const AdminLogin: React.FC = () => {
           </div>
         )}
 
-        <form onSubmit={handleLogin} className="space-y-6">
-          <div className="space-y-2">
-            <label className="block text-xs font-bold text-navy-500 uppercase tracking-wider">Email Address</label>
+        <form onSubmit={handleLogin} className="space-y-5">
+          <div className="space-y-1.5">
+            <label className="block text-xs font-extrabold text-navy-600 uppercase tracking-wider">Email Address</label>
             <div className="relative">
-              <Mail className="w-4 h-4 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" />
+              <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="input-healthcare pl-11 text-xs"
+                className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm text-navy-700 font-medium transition-all placeholder:text-slate-400 bg-white"
                 placeholder="admin@starlight.com"
               />
             </div>
           </div>
 
-          <div className="space-y-2">
-            <label className="block text-xs font-bold text-navy-500 uppercase tracking-wider">Password</label>
+          <div className="space-y-1.5">
+            <label className="block text-xs font-extrabold text-navy-600 uppercase tracking-wider">Password</label>
             <div className="relative">
-              <Lock className="w-4 h-4 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" />
+              <Lock className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 type="password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="input-healthcare pl-11 text-xs"
+                className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm text-navy-700 font-medium transition-all placeholder:text-slate-400 bg-white"
                 placeholder="••••••••"
               />
             </div>
           </div>
 
-          <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200/80 text-xs text-slate-600 space-y-1">
-            <span className="font-extrabold text-navy-500 block uppercase tracking-wider text-[10px]">Default Admin Credentials</span>
-            <div className="font-mono text-slate-700">Email: admin@starlight.com</div>
-            <div className="font-mono text-slate-700">Password: password123</div>
+          <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs text-slate-700 space-y-1">
+            <span className="font-extrabold text-navy-600 block uppercase tracking-wider text-[11px]">Default Admin Credentials</span>
+            <div className="font-mono text-slate-800 font-semibold">Email: admin@starlight.com</div>
+            <div className="font-mono text-slate-800 font-semibold">Password: password123</div>
           </div>
 
           <button

@@ -96,7 +96,7 @@ export const Header: React.FC = () => {
               <div className="flex items-center gap-2">
                 <span className="text-xl font-extrabold text-navy-500 tracking-tight">{settings.hospital_name}</span>
               </div>
-              <span className="text-[11px] font-extrabold text-gold-600 tracking-widest block uppercase font-mono">
+              <span className="text-[11px] font-extrabold text-amber-700 tracking-widest block uppercase font-mono">
                 {settings.motto}
               </span>
             </div>

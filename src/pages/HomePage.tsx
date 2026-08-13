@@ -68,9 +68,9 @@ export const HomePage: React.FC = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 lg:py-32">
           <div className="max-w-2xl space-y-6">
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-gold-400 text-xs font-extrabold tracking-wider uppercase backdrop-blur-md">
-              <img src="/starlight-logo.png" alt="Starlight Hospital" className="w-5 h-5 object-contain bg-white rounded-full p-0.5" />
-              STARLIGHT HOSPITAL • DEO MEDICE
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-navy-950/80 border border-amber-400/50 text-amber-300 text-xs font-extrabold tracking-wider uppercase shadow-md backdrop-blur-md">
+              <img src="/starlight-logo.png" alt="Starlight Hospital" className="w-5 h-5 object-contain bg-white rounded-full p-0.5 shadow-sm" />
+              <span className="text-amber-300 font-extrabold">STARLIGHT HOSPITAL • DEO MEDICE</span>
             </div>
             
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] tracking-tight">
@@ -86,20 +86,20 @@ export const HomePage: React.FC = () => {
                 <Calendar className="w-4 h-4" /> Request an Appointment
               </Link>
               <a href="tel:08053587646" className="btn-secondary bg-white/10 text-white hover:bg-white/20 border-white/30 backdrop-blur-md text-xs uppercase tracking-wider">
-                <Phone className="w-4 h-4 text-gold-400" /> Call 08053587646
+                <Phone className="w-4 h-4 text-amber-400" /> Call 08053587646
               </a>
             </div>
 
-            <div className="flex flex-wrap items-center gap-5 pt-4 text-xs text-slate-300 border-t border-white/15">
-              <div className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-teal-400" />
-                <a href="tel:08053587646" className="hover:text-gold-400 font-bold transition-colors">08053587646</a>
+            <div className="flex flex-wrap items-center gap-3 pt-5 border-t border-white/20 text-xs font-semibold">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-navy-950/70 border border-white/10 text-white backdrop-blur-sm">
+                <Phone className="w-3.5 h-3.5 text-teal-400 flex-shrink-0" />
+                <a href="tel:08053587646" className="hover:text-amber-300 font-extrabold transition-colors">08053587646</a>
                 <span className="text-slate-500">|</span>
-                <a href="tel:07079333090" className="hover:text-gold-400 font-bold transition-colors">07079333090</a>
+                <a href="tel:07079333090" className="hover:text-amber-300 font-extrabold transition-colors">07079333090</a>
               </div>
-              <div className="flex items-center gap-1.5 text-slate-400">
-                <MapPin className="w-3.5 h-3.5 text-gold-400" />
-                Jajo, Ikorodu, Lagos
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-navy-950/70 border border-white/10 text-white backdrop-blur-sm">
+                <MapPin className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
+                <span className="text-slate-200 font-semibold">Jajo, Ikorodu, Lagos</span>
               </div>
             </div>
           </div>
