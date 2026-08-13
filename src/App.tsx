@@ -4,7 +4,6 @@ import { AuthProvider } from './context/AuthContext';
 
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { MobileStickyBar } from './components/MobileStickyBar';
 import { PageTransition } from './components/PageTransition';
 
 import { HomePage } from './pages/HomePage';
@@ -49,7 +48,6 @@ const PublicLayout = () => {
       </div>
       <div>
         <Footer />
-        <MobileStickyBar />
       </div>
     </div>
   );
