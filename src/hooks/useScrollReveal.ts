@@ -1,6 +1,9 @@
 import { useEffect, useRef } from 'react';
 
-export const useScrollReveal = <T extends HTMLElement = HTMLDivElement>(threshold = 0.12) => {
+export const useScrollReveal = <T extends HTMLElement = HTMLDivElement>(
+  threshold = 0.15,
+  rootMargin = '0px 0px -80px 0px'
+) => {
   const ref = useRef<T | null>(null);
 
   useEffect(() => {
@@ -19,12 +22,14 @@ export const useScrollReveal = <T extends HTMLElement = HTMLDivElement>(threshol
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('reveal-visible');
+            requestAnimationFrame(() => {
+              entry.target.classList.add('reveal-visible');
+            });
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold, rootMargin: '0px 0px -40px 0px' }
+      { threshold, rootMargin }
     );
 
     observer.observe(node);
@@ -32,7 +37,7 @@ export const useScrollReveal = <T extends HTMLElement = HTMLDivElement>(threshol
     return () => {
       if (node) observer.unobserve(node);
     };
-  }, [threshold]);
+  }, [threshold, rootMargin]);
 
   return ref;
 };
