@@ -140,6 +140,68 @@
 }
 
 /* ═══════════════════════════════════════════════
+   SLIDE LEFT / RIGHT & SPLIT-IMAGE JOIN ANIMATIONS
+   ═══════════════════════════════════════════════ */
+
+/* Slide in from Left */
+.reveal-slide-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+/* Slide in from Right */
+.reveal-slide-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-visible .reveal-slide-left,
+.reveal-visible .reveal-slide-right,
+.reveal-visible.reveal-slide-left,
+.reveal-visible.reveal-slide-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Split Image Join Effect (Half Left + Half Right join together on scroll) */
+.split-join-container {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  border-radius: 1rem;
+}
+
+.split-join-left {
+  opacity: 0;
+  transform: translateX(-50px) scale(0.96);
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+}
+
+.split-join-right {
+  opacity: 0;
+  transform: translateX(50px) scale(0.96);
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+}
+
+.reveal-visible .split-join-left,
+.reveal-visible.split-join-left {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+.reveal-visible .split-join-right,
+.reveal-visible.split-join-right {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+/* ═══════════════════════════════════════════════
    ARTICLE PROSE
    ═══════════════════════════════════════════════ */
 .prose-article h2 {

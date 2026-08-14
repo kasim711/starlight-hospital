@@ -9,6 +9,7 @@ import { servicesData } from '../data/services';
 import { fetchArticles } from '../services/api';
 import { Article } from '../types';
 import { HealthcareImage } from '../components/HealthcareImage';
+import { SplitImageJoin } from '../components/SplitImageJoin';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const getIcon = (name: string) => {
@@ -55,61 +56,61 @@ export const HomePage: React.FC = () => {
       <section 
         ref={heroRef} 
         className="bg-parallax relative min-h-[70vh] lg:min-h-[75vh] flex items-center bg-cover bg-center"
-        style={{ backgroundImage: `url('https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&q=80&w=1920')` }}
+        style={{ backgroundImage: `url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&q=80&w=1920')` }}
       >
-        {/* Dark Navy Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/92 via-navy-950/80 to-navy-950/45"></div>
+        {/* High-Contrast Dark Navy Overlay */}
+        <div className="absolute inset-0 bg-navy-950/85 sm:bg-gradient-to-r sm:from-navy-950/95 sm:via-navy-950/90 sm:to-navy-950/75"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-28 w-full">
           <div className="max-w-2xl space-y-6">
             
-            {/* Pill Badge */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-gold-400 text-xs font-semibold uppercase tracking-wider backdrop-blur-md shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
+            {/* High-Contrast Pill Badge */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-navy-900/90 border border-amber-400/50 text-amber-300 text-xs font-bold uppercase tracking-wider shadow-md">
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
               STARLIGHT HOSPITAL • DEO MEDICE
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white leading-[1.18] tracking-tight drop-shadow-sm">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-[1.18] tracking-tight drop-shadow-md">
               Quality Healthcare for You and Your Family
             </h1>
             
             {/* Subtitle */}
-            <p className="text-slate-200 text-base sm:text-lg leading-relaxed max-w-xl">
+            <p className="text-slate-100 text-base sm:text-lg font-medium leading-relaxed max-w-xl drop-shadow-sm">
               Accessible healthcare services for individuals and families in Jajo, Ikorodu and surrounding communities.
             </p>
 
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
-              <Link to="/appointment" className="btn-teal text-sm py-3 px-6 shadow-md">
+              <Link to="/appointment" className="btn-teal text-sm py-3 px-6 shadow-md font-semibold">
                 <Calendar className="w-4 h-4" /> Request an Appointment
               </Link>
-              <a href="tel:08053587646" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white/15 border border-white/30 text-white font-medium text-sm hover:bg-white/25 transition-all backdrop-blur-md shadow-sm">
-                <Phone className="w-4 h-4 text-gold-400" /> Call 08053587646
+              <a href="tel:08053587646" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-navy-900/90 border border-white/30 text-white font-semibold text-sm hover:bg-navy-800 transition-all shadow-md">
+                <Phone className="w-4 h-4 text-amber-400" /> Call 08053587646
               </a>
             </div>
 
             {/* Contact Line */}
-            <div className="flex items-center gap-4 text-xs text-slate-300 pt-2 border-t border-white/15 max-w-lg">
-              <span className="font-semibold text-gold-400">Secondary Line:</span>
-              <a href="tel:07079333090" className="hover:text-white transition-colors font-medium">07079333090</a>
+            <div className="flex items-center gap-4 text-xs text-slate-200 pt-2 border-t border-white/20 max-w-lg font-medium">
+              <span className="font-semibold text-amber-300">Secondary Line:</span>
+              <a href="tel:07079333090" className="text-white hover:text-amber-300 transition-colors font-bold">07079333090</a>
               <span>•</span>
-              <span>Jajo, Ikorodu, Lagos</span>
+              <span className="text-slate-200">Jajo, Ikorodu, Lagos</span>
             </div>
 
           </div>
 
-          {/* Quick Feature Highlight Bar */}
-          <div className="mt-12 pt-8 border-t border-white/15 grid grid-cols-2 sm:grid-cols-4 gap-4">
+          {/* High-Contrast Quick Feature Highlight Bar */}
+          <div className="mt-12 pt-8 border-t border-white/20 grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
               { title: 'General Medical', desc: 'Outpatient consultations' },
               { title: 'Obstetrics & Gynaecology', desc: 'Women\'s health care' },
               { title: 'Paediatrics Care', desc: 'Healthcare for children' },
               { title: 'Laboratory & Diagnostics', desc: 'Clinical lab testing' }
             ].map((feat, i) => (
-              <div key={i} className="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/15 text-white space-y-0.5">
-                <span className="text-xs font-semibold text-gold-400 block">{feat.title}</span>
-                <span className="text-[11px] text-slate-300 block">{feat.desc}</span>
+              <div key={i} className="bg-navy-900/90 backdrop-blur-md p-4 rounded-xl border border-white/25 text-white shadow-lg space-y-1">
+                <span className="text-xs font-bold text-amber-300 block tracking-wide">{feat.title}</span>
+                <span className="text-xs text-slate-100 block font-medium">{feat.desc}</span>
               </div>
             ))}
           </div>
@@ -173,13 +174,13 @@ export const HomePage: React.FC = () => {
       </section>
 
 
-      {/* ═══ 3. ABOUT STARLIGHT — SECTION A: IMAGE LEFT | TEXT RIGHT ═══ */}
-      <section ref={aboutRef} className="bg-white py-14 md:py-20 border-t border-slate-100">
+      {/* ═══ 3. ABOUT STARLIGHT — SECTION A: SLIDE-LEFT IMAGE | TEXT RIGHT ═══ */}
+      <section ref={aboutRef} className="bg-white py-14 md:py-20 border-t border-slate-100 overflow-hidden">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             
-            {/* Image LEFT (6 Cols) */}
-            <div className="lg:col-span-6 img-reveal rounded-2xl overflow-hidden shadow-md">
+            {/* Image LEFT — Slides in from Left on scroll (6 Cols) */}
+            <div className="lg:col-span-6 reveal-slide-left rounded-2xl overflow-hidden shadow-md border border-slate-100">
               <HealthcareImage
                 src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1200"
                 alt="Starlight Hospital premises and healthcare team"
@@ -223,9 +224,9 @@ export const HomePage: React.FC = () => {
         className="bg-parallax relative min-h-[48vh] md:min-h-[56vh] flex items-center"
         style={{ backgroundImage: `url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&q=80&w=1920')` }}
       >
-        <div className="absolute inset-0 bg-navy-900/65"></div>
+        <div className="absolute inset-0 bg-navy-950/70"></div>
         <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 text-center py-16 space-y-4">
-          <p className="text-xs font-semibold uppercase tracking-widest text-gold-400">STARLIGHT HOSPITAL • DEO MEDICE</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-amber-300">STARLIGHT HOSPITAL • DEO MEDICE</p>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white leading-snug">
             Healthcare Guided by Purpose
           </h2>
@@ -241,8 +242,8 @@ export const HomePage: React.FC = () => {
       </section>
 
 
-      {/* ═══ 5. WHY STARLIGHT — SECTION B: TEXT LEFT | IMAGE RIGHT ═══ */}
-      <section ref={whyRef} className="bg-white py-14 md:py-20 border-b border-slate-100">
+      {/* ═══ 5. WHY STARLIGHT — SECTION B: TEXT LEFT | SLIDE-RIGHT IMAGE ═══ */}
+      <section ref={whyRef} className="bg-white py-14 md:py-20 border-b border-slate-100 overflow-hidden">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             
@@ -280,8 +281,8 @@ export const HomePage: React.FC = () => {
               </div>
             </div>
 
-            {/* Image RIGHT (6 Cols) */}
-            <div className="lg:col-span-6 img-reveal rounded-2xl overflow-hidden shadow-md order-1 lg:order-2">
+            {/* Image RIGHT — Slides in from Right on scroll (6 Cols) */}
+            <div className="lg:col-span-6 reveal-slide-right rounded-2xl overflow-hidden shadow-md border border-slate-100 order-1 lg:order-2">
               <HealthcareImage
                 src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=1200"
                 alt="Doctor consulting with patient at Starlight Hospital"
@@ -294,8 +295,8 @@ export const HomePage: React.FC = () => {
       </section>
 
 
-      {/* ═══ 6. CARE APPROACH — VISUAL JOURNEY + SUPPORTING IMAGE ═══ */}
-      <section ref={journeyRef} className="bg-slate-50/70 py-14 md:py-20">
+      {/* ═══ 6. CARE APPROACH — VISUAL JOURNEY + SPLIT IMAGE JOIN ON SCROLL ═══ */}
+      <section ref={journeyRef} className="bg-slate-50/70 py-14 md:py-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
@@ -325,11 +326,13 @@ export const HomePage: React.FC = () => {
               ))}
             </div>
 
-            {/* Supporting Image Panel (5 Cols) */}
-            <div className="lg:col-span-5 img-reveal rounded-2xl overflow-hidden shadow-md">
-              <HealthcareImage
-                src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1200"
-                alt="Compassionate healthcare care at Starlight"
+            {/* Split Image Join Effect — Left Half & Right Half Join Together on Scroll (5 Cols) */}
+            <div className="lg:col-span-5">
+              <SplitImageJoin
+                leftSrc="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800"
+                rightSrc="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&q=80&w=800"
+                leftAlt="Healthcare care listening"
+                rightAlt="Healthcare care support"
                 aspectRatio="aspect-[4/3]"
               />
             </div>
