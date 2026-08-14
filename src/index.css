@@ -99,6 +99,47 @@
 .reveal-visible .reveal-stagger-item:nth-child(6) { transition-delay: 0.46s; opacity: 1; transform: translateY(0); }
 
 /* ═══════════════════════════════════════════════
+   PARALLAX BACKGROUND IMAGE SECTIONS
+   ═══════════════════════════════════════════════ */
+.bg-parallax {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Mobile: disable fixed attachment (iOS doesn't support it well) */
+@media (max-width: 768px) {
+  .bg-parallax {
+    background-attachment: scroll;
+  }
+}
+
+/* Image zoom on scroll reveal */
+.img-reveal {
+  overflow: hidden;
+}
+.img-reveal img {
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+  transform: scale(1.08);
+}
+.img-reveal.revealed img,
+.reveal-visible .img-reveal img {
+  transform: scale(1);
+}
+
+/* Smooth image hover zoom */
+.img-hover-zoom {
+  overflow: hidden;
+}
+.img-hover-zoom img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.img-hover-zoom:hover img {
+  transform: scale(1.04);
+}
+
+/* ═══════════════════════════════════════════════
    ARTICLE PROSE
    ═══════════════════════════════════════════════ */
 .prose-article h2 {

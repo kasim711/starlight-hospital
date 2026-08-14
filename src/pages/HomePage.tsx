@@ -30,8 +30,10 @@ export const HomePage: React.FC = () => {
 
   const heroRef = useScrollReveal();
   const servicesRef = useScrollReveal();
+  const parallax1Ref = useScrollReveal();
   const whyRef = useScrollReveal();
   const aboutRef = useScrollReveal();
+  const parallax2Ref = useScrollReveal();
   const articlesRef = useScrollReveal();
   const locationRef = useScrollReveal();
   const ctaRef = useScrollReveal();
@@ -48,7 +50,7 @@ export const HomePage: React.FC = () => {
   return (
     <div>
 
-      {/* ═══ 1. HERO ═══ */}
+      {/* ═══ 1. HERO — Bright, image-right ═══ */}
       <section ref={heroRef} className="bg-white">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 md:py-20 lg:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
@@ -68,7 +70,7 @@ export const HomePage: React.FC = () => {
                 <a href="tel:07079333090" className="hover:text-teal-600 transition-colors">07079333090</a> · Jajo, Ikorodu, Lagos
               </p>
             </div>
-            <div className="rounded-2xl overflow-hidden">
+            <div className="img-reveal rounded-2xl overflow-hidden">
               <HealthcareImage
                 src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&q=80&w=1200"
                 alt="Healthcare consultation"
@@ -79,7 +81,7 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* ═══ 2. OUR SERVICES ═══ */}
+      {/* ═══ 2. SERVICES — Clean icon grid ═══ */}
       <section ref={servicesRef} className="bg-slate-50/50 py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
@@ -104,7 +106,28 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* ═══ 3. WHY STARLIGHT ═══ */}
+      {/* ═══ 3. PARALLAX IMAGE BREAK — Full-width background ═══ */}
+      <section
+        ref={parallax1Ref}
+        className="bg-parallax relative min-h-[50vh] md:min-h-[60vh] flex items-center"
+        style={{ backgroundImage: `url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&q=80&w=1920')` }}
+      >
+        <div className="absolute inset-0 bg-navy-900/60"></div>
+        <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 text-center py-20 space-y-5">
+          <p className="text-xs font-semibold uppercase tracking-widest text-gold-400">DEO MEDICE</p>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white leading-snug">
+            Healthcare Guided by Purpose
+          </h2>
+          <p className="text-slate-200 text-base leading-relaxed max-w-xl mx-auto">
+            Accessible, respectful and patient-focused care for your family.
+          </p>
+          <Link to="/appointment" className="btn-teal text-sm mt-2 inline-flex">
+            <Calendar className="w-4 h-4" /> Request an Appointment
+          </Link>
+        </div>
+      </section>
+
+      {/* ═══ 4. WHY STARLIGHT ═══ */}
       <section ref={whyRef} className="bg-white py-16 lg:py-20">
         <div className="max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 text-center space-y-6">
           <p className="text-xs font-semibold uppercase tracking-widest text-gold-600">Why Starlight Hospital</p>
@@ -127,11 +150,11 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* ═══ 4. ABOUT PREVIEW ═══ */}
-      <section ref={aboutRef} className="py-16 lg:py-20">
+      {/* ═══ 5. ABOUT PREVIEW — Image + content ═══ */}
+      <section ref={aboutRef} className="bg-slate-50/50 py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-            <div className="rounded-2xl overflow-hidden">
+            <div className="img-reveal rounded-2xl overflow-hidden">
               <HealthcareImage
                 src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1200"
                 alt="Starlight Hospital"
@@ -144,7 +167,7 @@ export const HomePage: React.FC = () => {
                 Community Healthcare in Jajo, Ikorodu
               </h2>
               <p className="text-slate-500 text-base leading-relaxed">
-                Starlight Hospital provides accessible, patient-centered healthcare services for individuals and families. Our approach combines clinical care with health education, guided by our motto — <span className="font-semibold text-navy-500">DEO MEDICE</span>.
+                Starlight Hospital provides accessible, patient-centered healthcare services for individuals and families. Our approach combines clinical care with health education, guided by our motto — <span className="font-semibold text-navy-500 italic">DEO MEDICE</span>.
               </p>
               <Link to="/about" className="inline-flex items-center gap-2 text-sm font-medium text-teal-600 hover:text-navy-500 transition-colors pt-1">
                 About Starlight Hospital <ArrowRight className="w-3.5 h-3.5" />
@@ -154,14 +177,34 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* ═══ 5. HEALTH INFORMATION ═══ */}
-      <section ref={articlesRef} className="bg-slate-50/50 py-16 lg:py-20">
+      {/* ═══ 6. PARALLAX IMAGE BREAK 2 ═══ */}
+      <section
+        ref={parallax2Ref}
+        className="bg-parallax relative min-h-[45vh] md:min-h-[55vh] flex items-center"
+        style={{ backgroundImage: `url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=1920')` }}
+      >
+        <div className="absolute inset-0 bg-navy-900/50"></div>
+        <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 text-center py-16 space-y-4">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-white leading-snug">
+            Care for Every Member of the Family
+          </h2>
+          <p className="text-slate-200 text-sm leading-relaxed max-w-lg mx-auto">
+            From general consultation to paediatrics, obstetrics, surgery, diagnostics and health education — under one roof.
+          </p>
+          <Link to="/services" className="inline-flex items-center gap-2 text-sm font-medium text-white border border-white/30 px-5 py-2.5 rounded-lg hover:bg-white/10 transition-colors mt-2">
+            Explore Services <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+      </section>
+
+      {/* ═══ 7. HEALTH INFORMATION ═══ */}
+      <section ref={articlesRef} className="bg-white py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3 mb-10">
             <div>
               <p className="text-xs font-semibold uppercase tracking-widest text-teal-600 mb-2">Health Information</p>
               <h2 className="text-2xl font-semibold text-navy-500">Health Information for You and Your Family</h2>
-              <p className="text-sm text-slate-500 mt-1">Practical health education, hospital updates and general information published by Starlight Hospital.</p>
+              <p className="text-sm text-slate-500 mt-1">Practical health education, hospital updates and general information.</p>
             </div>
             <Link to="/health-information" className="text-sm font-medium text-teal-600 hover:text-navy-500 transition-colors flex items-center gap-1 flex-shrink-0">
               View all <ArrowRight className="w-3.5 h-3.5" />
@@ -178,7 +221,7 @@ export const HomePage: React.FC = () => {
                 <Link key={art.id} to={`/health-information/${art.slug}`}
                   className="group bg-white rounded-xl border border-slate-100 hover:shadow-md transition-all duration-300 overflow-hidden">
                   {idx === 0 && art.featured_image && (
-                    <div className="h-44 overflow-hidden">
+                    <div className="h-44 img-hover-zoom overflow-hidden">
                       <HealthcareImage src={art.featured_image} alt={art.title} aspectRatio="h-full w-full" />
                     </div>
                   )}
@@ -199,8 +242,8 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* ═══ 6. LOCATION + CONTACT ═══ */}
-      <section ref={locationRef} className="bg-white py-16 lg:py-20">
+      {/* ═══ 8. LOCATION + CONTACT ═══ */}
+      <section ref={locationRef} className="bg-slate-50/50 py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 rounded-2xl overflow-hidden border border-slate-100">
             <div className="lg:col-span-5 p-8 sm:p-10 flex flex-col justify-center gap-5 bg-white">
@@ -220,8 +263,11 @@ export const HomePage: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <a href="https://maps.google.com/?q=Starlight+Hospital+Jajo+Ikorodu+Lagos" target="_blank" rel="noopener noreferrer"
-                className="btn-outline text-xs w-full sm:w-auto"><MapPin className="w-3.5 h-3.5" /> Get Directions</a>
+              <div className="flex flex-wrap gap-2">
+                <a href="https://maps.google.com/?q=Starlight+Hospital+Jajo+Ikorodu+Lagos" target="_blank" rel="noopener noreferrer"
+                  className="btn-outline text-xs"><MapPin className="w-3.5 h-3.5" /> Get Directions</a>
+                <a href="tel:08053587646" className="btn-teal text-xs"><Phone className="w-3.5 h-3.5" /> Call Hospital</a>
+              </div>
             </div>
             <div className="lg:col-span-7 min-h-[300px]">
               <iframe title="Starlight Hospital Location"
@@ -232,7 +278,7 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* ═══ 7. FINAL CTA ═══ */}
+      {/* ═══ 9. FINAL CTA ═══ */}
       <section ref={ctaRef} className="bg-navy-500 py-14 lg:py-16">
         <div className="max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 text-center space-y-4">
           <h2 className="text-xl sm:text-2xl font-semibold text-white">Need to Speak with the Hospital?</h2>
