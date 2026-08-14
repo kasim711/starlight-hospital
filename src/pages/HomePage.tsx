@@ -52,16 +52,18 @@ export const HomePage: React.FC = () => {
   return (
     <div className="overflow-x-hidden">
 
-      {/* ═══ 1. HERO — FULL BACKGROUND IMAGE BANNER ═══ */}
+      {/* ═══ 1. HERO — FULL BACKGROUND IMAGE BANNER WITH OVERLAPPING FEATURE CARDS ═══ */}
       <section 
         ref={heroRef} 
-        className="bg-parallax relative min-h-[70vh] lg:min-h-[75vh] flex items-center bg-cover bg-center"
+        className="bg-parallax relative min-h-[70vh] lg:min-h-[78vh] flex flex-col justify-between bg-cover bg-center"
         style={{ backgroundImage: `url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1920')` }}
       >
-        {/* Subtle Gradient Overlay — Keeps image fully visible while text is high contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/80 via-navy-950/50 to-transparent"></div>
+        {/* Subtle Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/85 via-navy-950/55 to-navy-950/20"></div>
+        {/* Bottom Fade to Services Section */}
+        <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-slate-50 via-slate-50/60 to-transparent pointer-events-none"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-28 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-16 md:pt-24 lg:pt-28 pb-20 w-full">
           <div className="max-w-2xl space-y-6">
             
             {/* Pill Badge */}
@@ -99,28 +101,29 @@ export const HomePage: React.FC = () => {
             </div>
 
           </div>
+        </div>
 
-          {/* Quick Feature Highlight Bar */}
-          <div className="mt-12 pt-8 border-t border-white/20 grid grid-cols-2 sm:grid-cols-4 gap-4">
+        {/* Floating Quick Feature Highlight Cards (Overlaps Hero & Services Section Boundary) */}
+        <div className="relative z-20 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 -mb-12 sm:-mb-14 w-full">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
               { title: 'General Medical', desc: 'Outpatient consultations' },
               { title: 'Obstetrics & Gynaecology', desc: 'Women\'s health care' },
               { title: 'Paediatrics Care', desc: 'Healthcare for children' },
               { title: 'Laboratory & Diagnostics', desc: 'Clinical lab testing' }
             ].map((feat, i) => (
-              <div key={i} className="bg-navy-950/75 backdrop-blur-md p-4 rounded-xl border border-white/25 text-white shadow-lg space-y-1">
-                <span className="text-xs font-bold text-amber-300 block tracking-wide">{feat.title}</span>
-                <span className="text-xs text-slate-100 block font-medium">{feat.desc}</span>
+              <div key={i} className="bg-white/95 backdrop-blur-md p-4 rounded-xl border border-slate-200/80 text-navy-500 shadow-xl space-y-1 hover:border-teal-500/50 hover:shadow-2xl transition-all duration-300">
+                <span className="text-xs font-bold text-navy-500 block tracking-wide">{feat.title}</span>
+                <span className="text-xs text-slate-500 block font-medium">{feat.desc}</span>
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
 
       {/* ═══ 2. SERVICES — VISUALLY RICH 6-CARD GRID WITH THUMBNAILS ═══ */}
-      <section ref={servicesRef} className="bg-slate-50/70 py-14 md:py-18">
+      <section ref={servicesRef} className="bg-slate-50 pt-20 pb-16 md:pt-24 md:pb-20">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-10">
@@ -175,7 +178,7 @@ export const HomePage: React.FC = () => {
 
 
       {/* ═══ 3. ABOUT STARLIGHT — SECTION A: SLIDE-LEFT IMAGE | TEXT RIGHT ═══ */}
-      <section ref={aboutRef} className="bg-white py-14 md:py-20 border-t border-slate-100 overflow-hidden">
+      <section ref={aboutRef} className="bg-gradient-to-b from-slate-50 via-white to-white py-16 md:py-20 border-t border-slate-100 overflow-hidden">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             
@@ -218,13 +221,19 @@ export const HomePage: React.FC = () => {
       </section>
 
 
-      {/* ═══ 4. FULL-WIDTH PARALLAX VISUAL BREAK 1 ═══ */}
+      {/* ═══ 4. FULL-WIDTH PARALLAX VISUAL BREAK 1 WITH TOP/BOTTOM GRADIENT MASKS ═══ */}
       <section
         ref={parallax1Ref}
         className="bg-parallax relative min-h-[48vh] md:min-h-[56vh] flex items-center"
         style={{ backgroundImage: `url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&q=80&w=1920')` }}
       >
+        {/* Dark Overlay */}
         <div className="absolute inset-0 bg-navy-950/70"></div>
+        {/* Top Gradient Fade from White */}
+        <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-white via-white/40 to-transparent pointer-events-none"></div>
+        {/* Bottom Gradient Fade to White */}
+        <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-white via-white/40 to-transparent pointer-events-none"></div>
+
         <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 text-center py-16 space-y-4">
           <p className="text-xs font-semibold uppercase tracking-widest text-amber-300">STARLIGHT HOSPITAL • DEO MEDICE</p>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white leading-snug">
@@ -343,13 +352,17 @@ export const HomePage: React.FC = () => {
       </section>
 
 
-      {/* ═══ 7. FULL-WIDTH PARALLAX VISUAL BREAK 2 ═══ */}
+      {/* ═══ 7. FULL-WIDTH PARALLAX VISUAL BREAK 2 WITH TOP/BOTTOM GRADIENT MASKS ═══ */}
       <section
         ref={parallax2Ref}
         className="bg-parallax relative min-h-[44vh] md:min-h-[52vh] flex items-center"
         style={{ backgroundImage: `url('https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80&w=1920')` }}
       >
-        <div className="absolute inset-0 bg-navy-900/60"></div>
+        <div className="absolute inset-0 bg-navy-950/70"></div>
+        {/* Top & Bottom Gradient Masks for Seamless Flow */}
+        <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-slate-50/90 via-slate-50/30 to-transparent pointer-events-none"></div>
+        <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-white via-white/30 to-transparent pointer-events-none"></div>
+
         <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 text-center py-14 space-y-4">
           <h2 className="text-2xl sm:text-3xl font-semibold text-white leading-snug">
             Care for Every Member of the Family
@@ -542,13 +555,16 @@ export const HomePage: React.FC = () => {
       </section>
 
 
-      {/* ═══ 10. FINAL CTA — FULL-WIDTH HEALTHCARE BACKGROUND PHOTO OVERLAY ═══ */}
+      {/* ═══ 10. FINAL CTA — FULL-WIDTH HEALTHCARE BACKGROUND PHOTO OVERLAY WITH TOP GRADIENT MASK ═══ */}
       <section 
         ref={ctaRef} 
         className="bg-parallax relative py-16 md:py-20"
         style={{ backgroundImage: `url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=1920')` }}
       >
-        <div className="absolute inset-0 bg-navy-900/80 backdrop-blur-[2px]"></div>
+        <div className="absolute inset-0 bg-navy-950/80 backdrop-blur-[2px]"></div>
+        {/* Top Gradient Blend from Slate-50 */}
+        <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-slate-50/90 via-slate-50/30 to-transparent pointer-events-none"></div>
+
         <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 text-center space-y-5">
           <p className="text-xs font-semibold uppercase tracking-widest text-gold-400">STARLIGHT HOSPITAL</p>
           
