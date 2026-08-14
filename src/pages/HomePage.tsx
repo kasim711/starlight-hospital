@@ -51,53 +51,69 @@ export const HomePage: React.FC = () => {
   return (
     <div className="overflow-x-hidden">
 
-      {/* ═══ 1. HERO — SECTION D: TEXT LEFT | IMAGE RIGHT (COMPACT & HIGH IMPACT) ═══ */}
-      <section ref={heroRef} className="bg-white border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-10 md:py-14 lg:py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      {/* ═══ 1. HERO — FULL BACKGROUND IMAGE BANNER ═══ */}
+      <section 
+        ref={heroRef} 
+        className="bg-parallax relative min-h-[70vh] lg:min-h-[75vh] flex items-center bg-cover bg-center"
+        style={{ backgroundImage: `url('https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&q=80&w=1920')` }}
+      >
+        {/* Dark Navy Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/92 via-navy-950/80 to-navy-950/45"></div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-28 w-full">
+          <div className="max-w-2xl space-y-6">
             
-            {/* Left Column — Copy & Actions (7 Cols) */}
-            <div className="lg:col-span-7 space-y-5">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 border border-teal-100 text-teal-700 text-xs font-semibold uppercase tracking-wider">
-                <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
-                Starlight Hospital · Jajo, Ikorodu
-              </div>
-
-              <h1 className="text-3xl sm:text-4xl lg:text-[2.85rem] font-semibold text-navy-500 leading-[1.18] tracking-tight">
-                Quality Healthcare for You and Your Family
-              </h1>
-              
-              <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-xl">
-                Accessible healthcare services for individuals and families in Jajo, Ikorodu and surrounding communities.
-              </p>
-
-              <div className="flex flex-wrap items-center gap-3 pt-2">
-                <Link to="/appointment" className="btn-teal">
-                  <Calendar className="w-4 h-4" /> Request an Appointment
-                </Link>
-                <a href="tel:08053587646" className="btn-outline">
-                  <Phone className="w-4 h-4 text-teal-600" /> Call 08053587646
-                </a>
-              </div>
-
-              <div className="flex items-center gap-4 text-xs text-slate-500 pt-1 border-t border-slate-100 max-w-lg">
-                <span className="font-medium text-navy-500">Emergency & Enquiries:</span>
-                <a href="tel:07079333090" className="hover:text-teal-600 transition-colors font-medium">07079333090</a>
-                <span>•</span>
-                <span>DEO MEDICE</span>
-              </div>
+            {/* Pill Badge */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-gold-400 text-xs font-semibold uppercase tracking-wider backdrop-blur-md shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
+              STARLIGHT HOSPITAL • DEO MEDICE
             </div>
 
-            {/* Right Column — Prominent Healthcare Photo (5 Cols) */}
-            <div className="lg:col-span-5 img-reveal rounded-2xl overflow-hidden shadow-lg border border-slate-100">
-              <HealthcareImage
-                src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&q=80&w=1200"
-                alt="Healthcare consultation at Starlight Hospital"
-                aspectRatio="aspect-[4/3]"
-              />
+            {/* Main Headline */}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white leading-[1.18] tracking-tight drop-shadow-sm">
+              Quality Healthcare for You and Your Family
+            </h1>
+            
+            {/* Subtitle */}
+            <p className="text-slate-200 text-base sm:text-lg leading-relaxed max-w-xl">
+              Accessible healthcare services for individuals and families in Jajo, Ikorodu and surrounding communities.
+            </p>
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <Link to="/appointment" className="btn-teal text-sm py-3 px-6 shadow-md">
+                <Calendar className="w-4 h-4" /> Request an Appointment
+              </Link>
+              <a href="tel:08053587646" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white/15 border border-white/30 text-white font-medium text-sm hover:bg-white/25 transition-all backdrop-blur-md shadow-sm">
+                <Phone className="w-4 h-4 text-gold-400" /> Call 08053587646
+              </a>
+            </div>
+
+            {/* Contact Line */}
+            <div className="flex items-center gap-4 text-xs text-slate-300 pt-2 border-t border-white/15 max-w-lg">
+              <span className="font-semibold text-gold-400">Secondary Line:</span>
+              <a href="tel:07079333090" className="hover:text-white transition-colors font-medium">07079333090</a>
+              <span>•</span>
+              <span>Jajo, Ikorodu, Lagos</span>
             </div>
 
           </div>
+
+          {/* Quick Feature Highlight Bar */}
+          <div className="mt-12 pt-8 border-t border-white/15 grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {[
+              { title: 'General Medical', desc: 'Outpatient consultations' },
+              { title: 'Obstetrics & Gynaecology', desc: 'Women\'s health care' },
+              { title: 'Paediatrics Care', desc: 'Healthcare for children' },
+              { title: 'Laboratory & Diagnostics', desc: 'Clinical lab testing' }
+            ].map((feat, i) => (
+              <div key={i} className="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/15 text-white space-y-0.5">
+                <span className="text-xs font-semibold text-gold-400 block">{feat.title}</span>
+                <span className="text-[11px] text-slate-300 block">{feat.desc}</span>
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
 
