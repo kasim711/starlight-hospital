@@ -37,7 +37,7 @@ import { AdminAuditLog } from './pages/admin/AdminAuditLog';
 // Public Layout Component
 const PublicLayout = () => {
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-slate-50 font-sans antialiased text-slate-800">
+    <div className="min-h-screen flex flex-col justify-between bg-white text-slate-800">
       <div>
         <Header />
         <main>
@@ -97,15 +97,13 @@ export const App: React.FC = () => {
             </Route>
           </Route>
 
-          {/* Fallback 404 Route */}
+          {/* 404 */}
           <Route path="*" element={<PublicLayout />}>
             <Route path="*" element={
-              <div className="max-w-4xl mx-auto px-4 py-24 text-center space-y-4">
-                <h1 className="text-4xl font-extrabold text-navy-500">404 - Page Not Found</h1>
-                <p className="text-slate-600 text-base">The requested page could not be found. Please navigate back to the homepage.</p>
-                <a href="/" className="inline-block px-6 py-3 rounded-xl bg-teal-500 text-white font-bold text-sm">
-                  Return to Home
-                </a>
+              <div className="max-w-lg mx-auto px-5 py-32 text-center space-y-4">
+                <h1 className="text-3xl font-semibold text-navy-500">Page Not Found</h1>
+                <p className="text-slate-500">The page you're looking for doesn't exist or has been moved.</p>
+                <a href="/" className="btn-teal text-sm inline-flex">Return Home</a>
               </div>
             } />
           </Route>

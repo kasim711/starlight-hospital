@@ -15,6 +15,7 @@ export default {
           700: '#0a243c',
           800: '#06192a',
           900: '#030c17',
+          950: '#020810',
         },
         teal: {
           50: '#effaf9',
@@ -26,6 +27,7 @@ export default {
         gold: {
           50: '#fdf9f0',
           100: '#f9eed7',
+          400: '#d4aa5a',
           500: '#C49A4A',
           600: '#b0873a',
           700: '#946f2c',
@@ -38,8 +40,8 @@ export default {
         sans: ['Outfit', 'Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        'card': '0 4px 20px -2px rgba(18, 59, 93, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04)',
-        'card-hover': '0 12px 30px -4px rgba(18, 59, 93, 0.14), 0 4px 10px -2px rgba(0, 0, 0, 0.06)',
+        'card': '0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02)',
+        'card-hover': '0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04)',
       }
     },
   },

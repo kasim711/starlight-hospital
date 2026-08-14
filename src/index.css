@@ -9,86 +9,74 @@
   }
   
   body {
-    @apply bg-slate-50 text-slate-850 font-sans antialiased selection:bg-teal-500 selection:text-white leading-relaxed overflow-x-hidden;
+    @apply bg-white text-slate-800 antialiased leading-relaxed overflow-x-hidden;
+    font-family: 'Outfit', 'Inter', system-ui, sans-serif;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sans tracking-tight text-navy-500 font-bold;
+    font-family: 'Outfit', 'Inter', system-ui, sans-serif;
+    @apply tracking-tight text-navy-500 font-semibold;
   }
 }
 
-/* Custom Healthcare UI Utilities & Design Tokens */
-.glass-nav {
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+/* ═══════════════════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════════════════ */
+.nav-shadow {
+  box-shadow: 0 1px 3px rgba(18, 59, 93, 0.06), 0 1px 2px rgba(0, 0, 0, 0.03);
 }
 
-.hero-gradient {
-  background: linear-gradient(135deg, rgba(18, 59, 93, 0.98) 0%, rgba(14, 48, 77, 0.96) 50%, rgba(22, 138, 138, 0.92) 100%);
-}
-
-.subtle-grid {
-  background-size: 36px 36px;
-  background-image: 
-    linear-gradient(to right, rgba(18, 59, 93, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(18, 59, 93, 0.03) 1px, transparent 1px);
-}
-
-.healthcare-card {
-  @apply bg-white rounded-2xl border border-slate-200/80 shadow-sm transition-all duration-300 hover:shadow-md hover:border-slate-300;
-}
-
-.badge-navy {
-  @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-navy-50 text-navy-600 border border-navy-100 text-xs font-bold uppercase tracking-wider;
-}
-
-.badge-teal {
-  @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-50 text-teal-700 border border-teal-100 text-xs font-bold uppercase tracking-wider;
-}
-
-.badge-gold {
-  @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold-50 text-gold-700 border border-gold-100 text-xs font-bold uppercase tracking-wider;
-}
-
-.input-healthcare {
-  @apply w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm text-navy-500 transition-all placeholder:text-slate-400 bg-white;
-}
-
+/* ═══════════════════════════════════════════════
+   BUTTONS — Clean, minimal
+   ═══════════════════════════════════════════════ */
 .btn-primary {
-  @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-navy-500 text-white font-bold text-sm hover:bg-navy-600 active:scale-[0.99] transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-navy-500 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-navy-500 text-white font-medium text-sm hover:bg-navy-600 active:scale-[0.99] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-navy-500/30 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
 }
 
 .btn-teal {
-  @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-teal-500 text-white font-bold text-sm hover:bg-teal-600 active:scale-[0.99] transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-teal-500 text-white font-medium text-sm hover:bg-teal-600 active:scale-[0.99] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
 }
 
-.btn-secondary {
-  @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white border border-slate-300 text-navy-500 font-bold text-sm hover:bg-slate-50 hover:border-slate-400 active:scale-[0.99] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
+.btn-outline {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-transparent border border-slate-300 text-navy-500 font-medium text-sm hover:bg-slate-50 hover:border-navy-500/30 active:scale-[0.99] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-navy-500/20 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
 }
 
 .btn-gold {
-  @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gold-500 text-navy-900 font-bold text-sm hover:bg-gold-600 active:scale-[0.99] transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-gold-500 text-white font-medium text-sm hover:bg-gold-600 active:scale-[0.99] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gold-500/30 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
 }
 
-/* Micro-Interactions & Animation Utility Classes */
-.hover-lift {
-  @apply transition-transform duration-300 ease-out hover:-translate-y-1.5;
+/* Legacy compatibility */
+.btn-secondary { @apply btn-outline; }
+
+/* ═══════════════════════════════════════════════
+   FORM INPUTS
+   ═══════════════════════════════════════════════ */
+.input-healthcare {
+  @apply w-full px-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-500 text-sm text-navy-500 transition-all placeholder:text-slate-400 bg-white;
 }
 
-.image-zoom-container {
-  @apply overflow-hidden rounded-2xl;
+/* ═══════════════════════════════════════════════
+   BADGES — Small, subtle
+   ═══════════════════════════════════════════════ */
+.badge-navy {
+  @apply inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-widest text-navy-500;
 }
 
-.image-zoom-hover {
-  @apply transition-transform duration-500 ease-out group-hover:scale-105;
+.badge-teal {
+  @apply inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-widest text-teal-600;
 }
 
-/* Scroll Reveal Classes (Driven by IntersectionObserver) */
+.badge-gold {
+  @apply inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-widest text-gold-600;
+}
+
+/* ═══════════════════════════════════════════════
+   SCROLL REVEAL
+   ═══════════════════════════════════════════════ */
 .reveal-hidden {
   opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
@@ -99,61 +87,55 @@
 
 .reveal-stagger-item {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal-visible .reveal-stagger-item:nth-child(1) { transition-delay: 0.08s; opacity: 1; transform: translateY(0); }
-.reveal-visible .reveal-stagger-item:nth-child(2) { transition-delay: 0.16s; opacity: 1; transform: translateY(0); }
-.reveal-visible .reveal-stagger-item:nth-child(3) { transition-delay: 0.24s; opacity: 1; transform: translateY(0); }
-.reveal-visible .reveal-stagger-item:nth-child(4) { transition-delay: 0.32s; opacity: 1; transform: translateY(0); }
-.reveal-visible .reveal-stagger-item:nth-child(5) { transition-delay: 0.40s; opacity: 1; transform: translateY(0); }
-.reveal-visible .reveal-stagger-item:nth-child(6) { transition-delay: 0.48s; opacity: 1; transform: translateY(0); }
+.reveal-visible .reveal-stagger-item:nth-child(1) { transition-delay: 0.06s; opacity: 1; transform: translateY(0); }
+.reveal-visible .reveal-stagger-item:nth-child(2) { transition-delay: 0.14s; opacity: 1; transform: translateY(0); }
+.reveal-visible .reveal-stagger-item:nth-child(3) { transition-delay: 0.22s; opacity: 1; transform: translateY(0); }
+.reveal-visible .reveal-stagger-item:nth-child(4) { transition-delay: 0.30s; opacity: 1; transform: translateY(0); }
+.reveal-visible .reveal-stagger-item:nth-child(5) { transition-delay: 0.38s; opacity: 1; transform: translateY(0); }
+.reveal-visible .reveal-stagger-item:nth-child(6) { transition-delay: 0.46s; opacity: 1; transform: translateY(0); }
 
-/* Article Prose Formatting */
+/* ═══════════════════════════════════════════════
+   ARTICLE PROSE
+   ═══════════════════════════════════════════════ */
 .prose-article h2 {
-  @apply text-2xl font-extrabold text-navy-500 mt-10 mb-4 border-b border-slate-200/80 pb-3 tracking-tight;
+  @apply text-xl font-semibold text-navy-500 mt-10 mb-4 pb-3 border-b border-slate-100;
 }
-
 .prose-article h3 {
-  @apply text-xl font-bold text-teal-600 mt-8 mb-3 tracking-tight;
+  @apply text-lg font-semibold text-teal-600 mt-8 mb-3;
 }
-
 .prose-article p {
-  @apply text-slate-700 leading-relaxed mb-5 text-base md:text-lg font-normal;
+  @apply text-slate-600 leading-relaxed mb-5 text-base;
 }
-
 .prose-article ul {
-  @apply list-disc list-inside space-y-2.5 mb-6 text-slate-700 text-base md:text-lg pl-2;
+  @apply list-disc list-inside space-y-2 mb-6 text-slate-600 text-base pl-2;
 }
-
 .prose-article ol {
-  @apply list-decimal list-inside space-y-2.5 mb-6 text-slate-700 text-base md:text-lg pl-2;
+  @apply list-decimal list-inside space-y-2 mb-6 text-slate-600 text-base pl-2;
 }
-
 .prose-article strong {
-  @apply text-navy-500 font-bold;
+  @apply text-navy-500 font-semibold;
 }
-
 .prose-article blockquote {
-  @apply border-l-4 border-teal-500 bg-teal-50/60 p-5 rounded-r-xl italic text-slate-700 my-8 shadow-sm;
+  @apply border-l-4 border-teal-500 bg-teal-50/40 p-5 rounded-r-lg italic text-slate-600 my-8;
 }
 
-/* Smooth Focus Outlines */
+/* ═══════════════════════════════════════════════
+   FOCUS & SCROLLBAR
+   ═══════════════════════════════════════════════ */
 *:focus-visible {
-  @apply outline-none ring-2 ring-teal-500 ring-offset-2;
+  @apply outline-none ring-2 ring-teal-500/40 ring-offset-2;
 }
 
-/* Custom Scrollbars */
-.scrollbar-none::-webkit-scrollbar {
-  display: none;
-}
-.scrollbar-none {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
 
-/* Reduced Motion Safety */
+/* ═══════════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
     animation-duration: 0.01ms !important;
@@ -161,12 +143,6 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .reveal-hidden {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-  .reveal-stagger-item {
-    opacity: 1 !important;
-    transform: none !important;
-  }
+  .reveal-hidden { opacity: 1 !important; transform: none !important; }
+  .reveal-stagger-item { opacity: 1 !important; transform: none !important; }
 }
