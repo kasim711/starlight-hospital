@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { 
   Phone, Calendar, ArrowRight, MapPin, Clock,
   Stethoscope, HeartPulse, Baby, Activity, BookOpenCheck, Microscope,
-  CheckCircle2
+  CheckCircle2, ChevronRight
 } from 'lucide-react';
 import { servicesData } from '../data/services';
 import { fetchArticles } from '../services/api';
@@ -12,7 +12,7 @@ import { HealthcareImage } from '../components/HealthcareImage';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const getIcon = (name: string) => {
-  const cls = "w-5 h-5 text-teal-600";
+  const cls = "w-4 h-4 text-teal-600";
   switch (name) {
     case 'Stethoscope': return <Stethoscope className={cls} />;
     case 'HeartPulse': return <HeartPulse className={cls} />;
@@ -30,9 +30,10 @@ export const HomePage: React.FC = () => {
 
   const heroRef = useScrollReveal();
   const servicesRef = useScrollReveal();
+  const aboutRef = useScrollReveal();
   const parallax1Ref = useScrollReveal();
   const whyRef = useScrollReveal();
-  const aboutRef = useScrollReveal();
+  const journeyRef = useScrollReveal();
   const parallax2Ref = useScrollReveal();
   const articlesRef = useScrollReveal();
   const locationRef = useScrollReveal();
@@ -48,251 +49,515 @@ export const HomePage: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
 
-      {/* ═══ 1. HERO — Bright, image-right ═══ */}
-      <section ref={heroRef} className="bg-white">
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 md:py-20 lg:py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-            <div className="space-y-5 max-w-lg">
-              <p className="text-xs font-semibold uppercase tracking-widest text-teal-600">Starlight Hospital</p>
-              <h1 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold text-navy-500 leading-[1.2]">
+      {/* ═══ 1. HERO — SECTION D: TEXT LEFT | IMAGE RIGHT (COMPACT & HIGH IMPACT) ═══ */}
+      <section ref={heroRef} className="bg-white border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-10 md:py-14 lg:py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            {/* Left Column — Copy & Actions (7 Cols) */}
+            <div className="lg:col-span-7 space-y-5">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 border border-teal-100 text-teal-700 text-xs font-semibold uppercase tracking-wider">
+                <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
+                Starlight Hospital · Jajo, Ikorodu
+              </div>
+
+              <h1 className="text-3xl sm:text-4xl lg:text-[2.85rem] font-semibold text-navy-500 leading-[1.18] tracking-tight">
                 Quality Healthcare for You and Your Family
               </h1>
-              <p className="text-slate-500 text-base leading-relaxed">
+              
+              <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-xl">
                 Accessible healthcare services for individuals and families in Jajo, Ikorodu and surrounding communities.
               </p>
-              <div className="flex flex-wrap items-center gap-3 pt-1">
-                <Link to="/appointment" className="btn-teal"><Calendar className="w-4 h-4" /> Request an Appointment</Link>
-                <a href="tel:08053587646" className="btn-outline"><Phone className="w-4 h-4" /> Call 08053587646</a>
+
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <Link to="/appointment" className="btn-teal">
+                  <Calendar className="w-4 h-4" /> Request an Appointment
+                </Link>
+                <a href="tel:08053587646" className="btn-outline">
+                  <Phone className="w-4 h-4 text-teal-600" /> Call 08053587646
+                </a>
               </div>
-              <p className="text-xs text-slate-400 pt-1">
-                <a href="tel:07079333090" className="hover:text-teal-600 transition-colors">07079333090</a> · Jajo, Ikorodu, Lagos
-              </p>
+
+              <div className="flex items-center gap-4 text-xs text-slate-500 pt-1 border-t border-slate-100 max-w-lg">
+                <span className="font-medium text-navy-500">Emergency & Enquiries:</span>
+                <a href="tel:07079333090" className="hover:text-teal-600 transition-colors font-medium">07079333090</a>
+                <span>•</span>
+                <span>DEO MEDICE</span>
+              </div>
             </div>
-            <div className="img-reveal rounded-2xl overflow-hidden">
+
+            {/* Right Column — Prominent Healthcare Photo (5 Cols) */}
+            <div className="lg:col-span-5 img-reveal rounded-2xl overflow-hidden shadow-lg border border-slate-100">
               <HealthcareImage
                 src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&q=80&w=1200"
-                alt="Healthcare consultation"
+                alt="Healthcare consultation at Starlight Hospital"
                 aspectRatio="aspect-[4/3]"
               />
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* ═══ 2. SERVICES — Clean icon grid ═══ */}
-      <section ref={servicesRef} className="bg-slate-50/50 py-16 lg:py-20">
+
+      {/* ═══ 2. SERVICES — VISUALLY RICH 6-CARD GRID WITH THUMBNAILS ═══ */}
+      <section ref={servicesRef} className="bg-slate-50/70 py-14 md:py-18">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <p className="text-xs font-semibold uppercase tracking-widest text-teal-600 mb-2">Our Services</p>
-            <h2 className="text-2xl sm:text-3xl font-semibold text-navy-500">What We Do</h2>
+          
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-10">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-teal-600 mb-1">Our Services</p>
+              <h2 className="text-2xl sm:text-3xl font-semibold text-navy-500">What We Offer</h2>
+            </div>
+            <Link to="/services" className="text-sm font-medium text-teal-600 hover:text-navy-500 transition-colors flex items-center gap-1">
+              View all services <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {servicesData.map((service) => (
-              <Link key={service.id} to={`/services/${service.id}`}
-                className="reveal-stagger-item group bg-white rounded-xl border border-slate-100 p-6 hover:border-slate-200 hover:shadow-md transition-all duration-300">
-                <div className="w-10 h-10 rounded-lg bg-teal-50 flex items-center justify-center mb-4">
-                  {getIcon(service.iconName)}
+              <Link
+                key={service.id}
+                to={`/services/${service.id}`}
+                className="reveal-stagger-item group bg-white rounded-xl overflow-hidden border border-slate-100 hover:border-slate-200 hover:shadow-lg transition-all duration-300 flex flex-col"
+              >
+                {/* Thumbnail Image Header */}
+                <div className="h-40 img-hover-zoom overflow-hidden relative">
+                  <HealthcareImage
+                    src={service.image}
+                    alt={service.title}
+                    aspectRatio="h-full w-full"
+                  />
+                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-md p-2 rounded-lg shadow-sm">
+                    {getIcon(service.iconName)}
+                  </div>
                 </div>
-                <h3 className="text-base font-semibold text-navy-500 mb-1.5 group-hover:text-teal-600 transition-colors">{service.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed mb-3 line-clamp-2">{service.shortDesc}</p>
-                <span className="text-xs font-medium text-teal-600 flex items-center gap-1 group-hover:gap-2 transition-all">
-                  View service <ArrowRight className="w-3 h-3" />
-                </span>
+
+                {/* Card Body */}
+                <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+                  <div>
+                    <h3 className="text-base font-semibold text-navy-500 group-hover:text-teal-600 transition-colors mb-1.5">
+                      {service.title}
+                    </h3>
+                    <p className="text-sm text-slate-500 leading-relaxed line-clamp-2">
+                      {service.shortDesc}
+                    </p>
+                  </div>
+                  <span className="text-xs font-medium text-teal-600 flex items-center gap-1 group-hover:gap-2 transition-all pt-2">
+                    View service <ArrowRight className="w-3 h-3" />
+                  </span>
+                </div>
               </Link>
             ))}
           </div>
+
         </div>
       </section>
 
-      {/* ═══ 3. PARALLAX IMAGE BREAK — Full-width background ═══ */}
+
+      {/* ═══ 3. ABOUT STARLIGHT — SECTION A: IMAGE LEFT | TEXT RIGHT ═══ */}
+      <section ref={aboutRef} className="bg-white py-14 md:py-20 border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            
+            {/* Image LEFT (6 Cols) */}
+            <div className="lg:col-span-6 img-reveal rounded-2xl overflow-hidden shadow-md">
+              <HealthcareImage
+                src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1200"
+                alt="Starlight Hospital premises and healthcare team"
+                aspectRatio="aspect-[4/3]"
+              />
+            </div>
+
+            {/* Text RIGHT (6 Cols) */}
+            <div className="lg:col-span-6 space-y-5">
+              <p className="text-xs font-semibold uppercase tracking-widest text-teal-600">About Starlight Hospital</p>
+              
+              <h2 className="text-2xl sm:text-3xl font-semibold text-navy-500 leading-snug">
+                Community Healthcare in Jajo, Ikorodu
+              </h2>
+
+              <p className="text-slate-600 text-base leading-relaxed">
+                Starlight Hospital serves individuals and families in Jajo, Ikorodu with clinical, diagnostic, counselling, and health education services. Our care philosophy combines clinical competence with patient respect and community accessibility.
+              </p>
+
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 space-y-1">
+                <span className="text-xs font-bold uppercase tracking-widest text-gold-600 block">Hospital Motto</span>
+                <span className="text-lg font-serif italic text-navy-500 font-semibold">DEO MEDICE</span>
+                <p className="text-xs text-slate-500">Guiding our commitment to respectful and compassionate patient care.</p>
+              </div>
+
+              <div className="pt-2">
+                <Link to="/about" className="btn-teal text-xs">
+                  About Starlight Hospital <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                </Link>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      {/* ═══ 4. FULL-WIDTH PARALLAX VISUAL BREAK 1 ═══ */}
       <section
         ref={parallax1Ref}
-        className="bg-parallax relative min-h-[50vh] md:min-h-[60vh] flex items-center"
+        className="bg-parallax relative min-h-[48vh] md:min-h-[56vh] flex items-center"
         style={{ backgroundImage: `url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&q=80&w=1920')` }}
       >
-        <div className="absolute inset-0 bg-navy-900/60"></div>
-        <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 text-center py-20 space-y-5">
-          <p className="text-xs font-semibold uppercase tracking-widest text-gold-400">DEO MEDICE</p>
+        <div className="absolute inset-0 bg-navy-900/65"></div>
+        <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 text-center py-16 space-y-4">
+          <p className="text-xs font-semibold uppercase tracking-widest text-gold-400">STARLIGHT HOSPITAL • DEO MEDICE</p>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white leading-snug">
             Healthcare Guided by Purpose
           </h2>
           <p className="text-slate-200 text-base leading-relaxed max-w-xl mx-auto">
-            Accessible, respectful and patient-focused care for your family.
+            A hospital designed to make access to healthcare straightforward, respectful and practical for individuals and families.
           </p>
-          <Link to="/appointment" className="btn-teal text-sm mt-2 inline-flex">
-            <Calendar className="w-4 h-4" /> Request an Appointment
-          </Link>
-        </div>
-      </section>
-
-      {/* ═══ 4. WHY STARLIGHT ═══ */}
-      <section ref={whyRef} className="bg-white py-16 lg:py-20">
-        <div className="max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 text-center space-y-6">
-          <p className="text-xs font-semibold uppercase tracking-widest text-gold-600">Why Starlight Hospital</p>
-          <h2 className="text-xl sm:text-2xl font-semibold text-navy-500 leading-relaxed">
-            A hospital designed to make access to healthcare straightforward, respectful and practical for individuals and families in Jajo and Ikorodu.
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4">
-            {[
-              { title: 'Convenient Local Access', desc: 'Healthcare available in your community without travelling far.' },
-              { title: 'Core Services, One Hospital', desc: 'A broad offering of clinical, diagnostic and health education services.' },
-              { title: 'Patient & Family Focused', desc: 'Care designed around patients, parents, children and families.' },
-            ].map((item, i) => (
-              <div key={i} className="reveal-stagger-item space-y-2">
-                <CheckCircle2 className="w-5 h-5 text-teal-500 mx-auto" />
-                <h3 className="text-sm font-semibold text-navy-500">{item.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
+          <div className="pt-2">
+            <Link to="/appointment" className="btn-teal text-sm">
+              <Calendar className="w-4 h-4" /> Request an Appointment
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* ═══ 5. ABOUT PREVIEW — Image + content ═══ */}
-      <section ref={aboutRef} className="bg-slate-50/50 py-16 lg:py-20">
+
+      {/* ═══ 5. WHY STARLIGHT — SECTION B: TEXT LEFT | IMAGE RIGHT ═══ */}
+      <section ref={whyRef} className="bg-white py-14 md:py-20 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-            <div className="img-reveal rounded-2xl overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            
+            {/* Text LEFT (6 Cols) */}
+            <div className="lg:col-span-6 space-y-6 order-2 lg:order-1">
+              <p className="text-xs font-semibold uppercase tracking-widest text-gold-600">Why Starlight Hospital</p>
+              
+              <h2 className="text-2xl sm:text-3xl font-semibold text-navy-500 leading-snug">
+                A hospital designed to make access to healthcare straightforward, respectful and practical.
+              </h2>
+
+              <div className="space-y-4 pt-1">
+                {[
+                  {
+                    title: 'Convenient Local Access',
+                    desc: 'Healthcare services available within your community in Jajo, Ikorodu, saving valuable time during health needs.'
+                  },
+                  {
+                    title: 'Core Services, One Hospital',
+                    desc: 'A broad offering of general medical, women’s health, paediatric, surgical, diagnostic, and health education services.'
+                  },
+                  {
+                    title: 'Patient & Family Focused',
+                    desc: 'Care and communication designed around patients, parents, children, and families with clear guidance.'
+                  }
+                ].map((point, idx) => (
+                  <div key={idx} className="flex items-start gap-3 p-3 rounded-lg bg-slate-50 border border-slate-100">
+                    <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <h3 className="text-sm font-semibold text-navy-500">{point.title}</h3>
+                      <p className="text-xs text-slate-500 leading-relaxed mt-0.5">{point.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Image RIGHT (6 Cols) */}
+            <div className="lg:col-span-6 img-reveal rounded-2xl overflow-hidden shadow-md order-1 lg:order-2">
               <HealthcareImage
-                src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1200"
-                alt="Starlight Hospital"
+                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=1200"
+                alt="Doctor consulting with patient at Starlight Hospital"
                 aspectRatio="aspect-[4/3]"
               />
             </div>
-            <div className="space-y-4">
-              <p className="text-xs font-semibold uppercase tracking-widest text-teal-600">About Starlight</p>
-              <h2 className="text-2xl sm:text-3xl font-semibold text-navy-500 leading-snug">
-                Community Healthcare in Jajo, Ikorodu
-              </h2>
-              <p className="text-slate-500 text-base leading-relaxed">
-                Starlight Hospital provides accessible, patient-centered healthcare services for individuals and families. Our approach combines clinical care with health education, guided by our motto — <span className="font-semibold text-navy-500 italic">DEO MEDICE</span>.
-              </p>
-              <Link to="/about" className="inline-flex items-center gap-2 text-sm font-medium text-teal-600 hover:text-navy-500 transition-colors pt-1">
-                About Starlight Hospital <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
+
           </div>
         </div>
       </section>
 
-      {/* ═══ 6. PARALLAX IMAGE BREAK 2 ═══ */}
+
+      {/* ═══ 6. CARE APPROACH — VISUAL JOURNEY + SUPPORTING IMAGE ═══ */}
+      <section ref={journeyRef} className="bg-slate-50/70 py-14 md:py-20">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
+            <p className="text-xs font-semibold uppercase tracking-widest text-teal-600">Patient Experience</p>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-navy-500">Our Care Journey</h2>
+            <p className="text-sm text-slate-500">How we structure patient interaction from first visit to follow-up.</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            {/* Visual 4-Step Journey (7 Cols) */}
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {[
+                { num: '01', title: 'LISTEN', desc: 'Understand the patient’s concern and relevant medical history attentively.' },
+                { num: '02', title: 'ASSESS', desc: 'Support appropriate clinical evaluation and diagnostic work-up.' },
+                { num: '03', title: 'EXPLAIN', desc: 'Make next steps understandable to patients and family caregivers.' },
+                { num: '04', title: 'SUPPORT', desc: 'Provide follow-up care and health education where applicable.' }
+              ].map((step, idx) => (
+                <div key={idx} className="reveal-stagger-item bg-white p-5 rounded-xl border border-slate-100 shadow-sm space-y-2 relative">
+                  <div className="flex items-center justify-between">
+                    <span className="text-2xl font-bold text-teal-500/40 font-mono">{step.num}</span>
+                    <span className="text-[10px] font-semibold uppercase tracking-widest text-teal-600 bg-teal-50 px-2 py-0.5 rounded">Step {idx + 1}</span>
+                  </div>
+                  <h3 className="text-sm font-semibold text-navy-500">{step.title}</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">{step.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Supporting Image Panel (5 Cols) */}
+            <div className="lg:col-span-5 img-reveal rounded-2xl overflow-hidden shadow-md">
+              <HealthcareImage
+                src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1200"
+                alt="Compassionate healthcare care at Starlight"
+                aspectRatio="aspect-[4/3]"
+              />
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* ═══ 7. FULL-WIDTH PARALLAX VISUAL BREAK 2 ═══ */}
       <section
         ref={parallax2Ref}
-        className="bg-parallax relative min-h-[45vh] md:min-h-[55vh] flex items-center"
-        style={{ backgroundImage: `url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=1920')` }}
+        className="bg-parallax relative min-h-[44vh] md:min-h-[52vh] flex items-center"
+        style={{ backgroundImage: `url('https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80&w=1920')` }}
       >
-        <div className="absolute inset-0 bg-navy-900/50"></div>
-        <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 text-center py-16 space-y-4">
+        <div className="absolute inset-0 bg-navy-900/60"></div>
+        <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 text-center py-14 space-y-4">
           <h2 className="text-2xl sm:text-3xl font-semibold text-white leading-snug">
             Care for Every Member of the Family
           </h2>
           <p className="text-slate-200 text-sm leading-relaxed max-w-lg mx-auto">
-            From general consultation to paediatrics, obstetrics, surgery, diagnostics and health education — under one roof.
+            From general consultation to obstetrics, paediatrics, surgery, diagnostics, and health education.
           </p>
-          <Link to="/services" className="inline-flex items-center gap-2 text-sm font-medium text-white border border-white/30 px-5 py-2.5 rounded-lg hover:bg-white/10 transition-colors mt-2">
-            Explore Services <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
+          <div className="pt-1">
+            <Link to="/services" className="inline-flex items-center gap-2 text-sm font-medium text-white border border-white/30 px-5 py-2.5 rounded-lg hover:bg-white/10 transition-colors">
+              Explore All Services <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* ═══ 7. HEALTH INFORMATION ═══ */}
-      <section ref={articlesRef} className="bg-white py-16 lg:py-20">
+
+      {/* ═══ 8. HEALTH INFORMATION — EDITORIAL VISUAL ANCHOR ═══ */}
+      <section ref={articlesRef} className="bg-white py-14 md:py-20 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+          
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3 mb-10">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-teal-600 mb-2">Health Information</p>
-              <h2 className="text-2xl font-semibold text-navy-500">Health Information for You and Your Family</h2>
-              <p className="text-sm text-slate-500 mt-1">Practical health education, hospital updates and general information.</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-teal-600 mb-1">Health Information</p>
+              <h2 className="text-2xl sm:text-3xl font-semibold text-navy-500">Health Information for You and Your Family</h2>
+              <p className="text-sm text-slate-500 mt-0.5">Practical health education, hospital updates, and general guidance published by Starlight Hospital.</p>
             </div>
             <Link to="/health-information" className="text-sm font-medium text-teal-600 hover:text-navy-500 transition-colors flex items-center gap-1 flex-shrink-0">
-              View all <ArrowRight className="w-3.5 h-3.5" />
+              View all articles <ChevronRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
           {loadingArticles ? (
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-              {[1,2,3].map(n => <div key={n} className="animate-pulse bg-slate-100 h-48 rounded-xl"></div>)}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              <div className="lg:col-span-7 bg-slate-100 h-72 rounded-xl animate-pulse"></div>
+              <div className="lg:col-span-5 space-y-4">
+                <div className="bg-slate-100 h-32 rounded-xl animate-pulse"></div>
+                <div className="bg-slate-100 h-32 rounded-xl animate-pulse"></div>
+              </div>
             </div>
           ) : recentArticles.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-              {recentArticles.map((art, idx) => (
-                <Link key={art.id} to={`/health-information/${art.slug}`}
-                  className="group bg-white rounded-xl border border-slate-100 hover:shadow-md transition-all duration-300 overflow-hidden">
-                  {idx === 0 && art.featured_image && (
-                    <div className="h-44 img-hover-zoom overflow-hidden">
-                      <HealthcareImage src={art.featured_image} alt={art.title} aspectRatio="h-full w-full" />
-                    </div>
-                  )}
-                  <div className="p-5 space-y-2">
-                    <div className="flex items-center gap-2 text-xs text-slate-400">
-                      <span className="font-medium text-teal-600 uppercase">{art.category}</span>
-                      {art.reading_time && <><span>·</span><span className="flex items-center gap-0.5"><Clock className="w-3 h-3" />{art.reading_time} min</span></>}
-                    </div>
-                    <h3 className="text-sm font-semibold text-navy-500 group-hover:text-teal-600 transition-colors line-clamp-2">{art.title}</h3>
-                    {art.excerpt && <p className="text-xs text-slate-500 line-clamp-2">{art.excerpt}</p>}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              
+              {/* Featured Article — Large Visual Anchor (7 Cols) */}
+              <Link 
+                to={`/health-information/${recentArticles[0].slug}`} 
+                className="lg:col-span-7 group block bg-white rounded-xl overflow-hidden border border-slate-100 hover:shadow-lg transition-all duration-300"
+              >
+                <div className="h-60 sm:h-72 img-hover-zoom relative overflow-hidden">
+                  <HealthcareImage 
+                    src={recentArticles[0].featured_image || 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1000'} 
+                    alt={recentArticles[0].title} 
+                    aspectRatio="h-full w-full" 
+                  />
+                  <div className="absolute top-3 left-3 bg-teal-600 text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded">
+                    Featured Article
                   </div>
-                </Link>
-              ))}
+                </div>
+                <div className="p-6 space-y-2">
+                  <div className="flex items-center gap-3 text-xs text-slate-400">
+                    <span className="font-medium text-teal-600 uppercase">{recentArticles[0].category}</span>
+                    <span>•</span>
+                    <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {recentArticles[0].reading_time || 5} min read</span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-navy-500 group-hover:text-teal-600 transition-colors line-clamp-2">
+                    {recentArticles[0].title}
+                  </h3>
+                  <p className="text-sm text-slate-500 line-clamp-2 leading-relaxed">
+                    {recentArticles[0].excerpt}
+                  </p>
+                </div>
+              </Link>
+
+              {/* Secondary Articles — Lighter List (5 Cols) */}
+              <div className="lg:col-span-5 flex flex-col justify-between gap-4">
+                {recentArticles.slice(1).map((art) => (
+                  <Link 
+                    key={art.id} 
+                    to={`/health-information/${art.slug}`} 
+                    className="group flex gap-4 items-center border border-slate-100 bg-white rounded-xl p-4 hover:shadow-md transition-all duration-300 flex-1"
+                  >
+                    <div className="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden img-hover-zoom">
+                      <HealthcareImage 
+                        src={art.featured_image || 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&q=80&w=600'} 
+                        alt={art.title} 
+                        aspectRatio="h-full w-full" 
+                      />
+                    </div>
+                    <div className="min-w-0 space-y-1">
+                      <span className="text-[10px] text-teal-600 font-semibold uppercase tracking-wider">{art.category}</span>
+                      <h4 className="text-sm font-semibold text-navy-500 line-clamp-2 group-hover:text-teal-600 transition-colors">
+                        {art.title}
+                      </h4>
+                      <span className="text-xs text-slate-400 flex items-center gap-1 pt-0.5">
+                        <Clock className="w-3 h-3" /> {art.reading_time || 4} min read
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 text-center">
+                  <p className="text-xs text-slate-500 mb-2">Looking for specific health topics or guidance?</p>
+                  <Link to="/health-information" className="text-xs font-semibold text-teal-600 hover:text-navy-500 inline-flex items-center gap-1">
+                    Explore Health Information Hub <ArrowRight className="w-3 h-3" />
+                  </Link>
+                </div>
+              </div>
+
             </div>
           ) : (
             <p className="text-sm text-slate-400 text-center py-8">No articles published yet.</p>
           )}
+
         </div>
       </section>
 
-      {/* ═══ 8. LOCATION + CONTACT ═══ */}
-      <section ref={locationRef} className="bg-slate-50/50 py-16 lg:py-20">
+
+      {/* ═══ 9. LOCATION — HOSPITAL PHOTO + CONTACT + GOOGLE MAP ═══ */}
+      <section ref={locationRef} className="bg-slate-50/70 py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 rounded-2xl overflow-hidden border border-slate-100">
-            <div className="lg:col-span-5 p-8 sm:p-10 flex flex-col justify-center gap-5 bg-white">
-              <p className="text-xs font-semibold uppercase tracking-widest text-teal-600">Visit Us</p>
-              <h2 className="text-xl font-semibold text-navy-500">Starlight Hospital</h2>
-              <div className="space-y-3 text-sm text-slate-600">
-                <div className="flex items-start gap-2.5">
-                  <MapPin className="w-4 h-4 text-teal-600 flex-shrink-0 mt-0.5" />
-                  <span className="leading-relaxed">Block A Plot 6 & 19, Jajo Phase 2, Crystal Estate, along Imowo-Nla Road, Jajo, Ikorodu, Lagos.</span>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Phone className="w-4 h-4 text-teal-600 flex-shrink-0" />
-                  <div className="flex gap-2 font-medium text-navy-500">
-                    <a href="tel:08053587646" className="hover:text-teal-600 transition-colors">08053587646</a>
-                    <span className="text-slate-300">/</span>
-                    <a href="tel:07079333090" className="hover:text-teal-600 transition-colors">07079333090</a>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 rounded-2xl overflow-hidden border border-slate-200/80 bg-white shadow-sm">
+            
+            {/* Contact & Hospital Info (5 Cols) */}
+            <div className="lg:col-span-5 p-8 sm:p-10 flex flex-col justify-between gap-6 border-b lg:border-b-0 lg:border-r border-slate-100">
+              <div className="space-y-4">
+                <p className="text-xs font-semibold uppercase tracking-widest text-teal-600">Location & Access</p>
+                
+                <h2 className="text-xl font-semibold text-navy-500">Starlight Hospital</h2>
+                
+                <div className="space-y-3 text-sm text-slate-600">
+                  <div className="flex items-start gap-2.5">
+                    <MapPin className="w-4 h-4 text-teal-600 flex-shrink-0 mt-0.5" />
+                    <span className="leading-relaxed">
+                      Block A Plot 6 & 19, Jajo Phase 2, Crystal Estate, along Imowo-Nla Road, Jajo, Ikorodu, Lagos.
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2.5 pt-1">
+                    <Phone className="w-4 h-4 text-teal-600 flex-shrink-0" />
+                    <div className="flex flex-wrap gap-2 font-medium text-navy-500">
+                      <a href="tel:08053587646" className="hover:text-teal-600 transition-colors">08053587646</a>
+                      <span className="text-slate-300">/</span>
+                      <a href="tel:07079333090" className="hover:text-teal-600 transition-colors">07079333090</a>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-2">
-                <a href="https://maps.google.com/?q=Starlight+Hospital+Jajo+Ikorodu+Lagos" target="_blank" rel="noopener noreferrer"
-                  className="btn-outline text-xs"><MapPin className="w-3.5 h-3.5" /> Get Directions</a>
-                <a href="tel:08053587646" className="btn-teal text-xs"><Phone className="w-3.5 h-3.5" /> Call Hospital</a>
+
+              {/* Hospital Photo Preview Panel */}
+              <div className="h-32 rounded-xl overflow-hidden img-hover-zoom relative border border-slate-100">
+                <HealthcareImage
+                  src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800"
+                  alt="Starlight Hospital Entrance"
+                  aspectRatio="h-full w-full"
+                />
+                <div className="absolute inset-0 bg-navy-900/30 flex items-end p-3">
+                  <span className="text-white text-xs font-medium">Jajo, Ikorodu Facility</span>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-2 pt-1">
+                <a 
+                  href="https://maps.google.com/?q=Starlight+Hospital+Jajo+Ikorodu+Lagos" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="btn-outline text-xs"
+                >
+                  <MapPin className="w-3.5 h-3.5" /> Get Directions
+                </a>
+                <a href="tel:08053587646" className="btn-teal text-xs">
+                  <Phone className="w-3.5 h-3.5" /> Call Hospital
+                </a>
               </div>
             </div>
-            <div className="lg:col-span-7 min-h-[300px]">
-              <iframe title="Starlight Hospital Location"
+
+            {/* Google Map Iframe (7 Cols) */}
+            <div className="lg:col-span-7 min-h-[320px] bg-slate-100">
+              <iframe 
+                title="Starlight Hospital Location Map"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15850.550186985023!2d3.5135!3d6.6212!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b935d21df266f%3A0x8e833446059d99bf!2sIkorodu%2C%20Lagos!5e0!3m2!1sen!2sng!4v1690000000000!5m2!1sen!2sng"
-                className="w-full h-full min-h-[300px] border-0" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+                className="w-full h-full min-h-[320px] border-0" 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade" 
+              />
             </div>
+
           </div>
+
         </div>
       </section>
 
-      {/* ═══ 9. FINAL CTA ═══ */}
-      <section ref={ctaRef} className="bg-navy-500 py-14 lg:py-16">
-        <div className="max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 text-center space-y-4">
-          <h2 className="text-xl sm:text-2xl font-semibold text-white">Need to Speak with the Hospital?</h2>
-          <p className="text-sm text-slate-300 leading-relaxed">
-            For appointments, service enquiries or directions, contact Starlight Hospital.
+
+      {/* ═══ 10. FINAL CTA — FULL-WIDTH HEALTHCARE BACKGROUND PHOTO OVERLAY ═══ */}
+      <section 
+        ref={ctaRef} 
+        className="bg-parallax relative py-16 md:py-20"
+        style={{ backgroundImage: `url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=1920')` }}
+      >
+        <div className="absolute inset-0 bg-navy-900/80 backdrop-blur-[2px]"></div>
+        <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 text-center space-y-5">
+          <p className="text-xs font-semibold uppercase tracking-widest text-gold-400">STARLIGHT HOSPITAL</p>
+          
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white leading-snug">
+            Need to Speak with the Hospital?
+          </h2>
+          
+          <p className="text-slate-200 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
+            For appointments, service enquiries or directions, contact Starlight Hospital directly.
           </p>
-          <div className="flex flex-wrap justify-center gap-3 pt-2">
-            <a href="tel:08053587646" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white text-navy-500 text-sm font-medium hover:bg-slate-50 transition-colors">
-              <Phone className="w-4 h-4" /> Call 08053587646
+
+          <div className="flex flex-wrap justify-center items-center gap-3 pt-3">
+            <a 
+              href="tel:08053587646" 
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white text-navy-500 text-sm font-semibold hover:bg-slate-100 transition-colors shadow-sm"
+            >
+              <Phone className="w-4 h-4 text-teal-600" /> Call 08053587646
             </a>
-            <a href="tel:07079333090" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-white/20 text-white text-sm font-medium hover:bg-white/10 transition-colors">
-              <Phone className="w-4 h-4" /> Call 07079333090
+            <a 
+              href="tel:07079333090" 
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-white/30 text-white text-sm font-medium hover:bg-white/10 transition-colors"
+            >
+              <Phone className="w-4 h-4 text-gold-400" /> Call 07079333090
             </a>
-            <Link to="/appointment" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-teal-500 text-white text-sm font-medium hover:bg-teal-600 transition-colors">
+            <Link 
+              to="/appointment" 
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-teal-500 text-white text-sm font-semibold hover:bg-teal-600 transition-colors shadow-sm"
+            >
               <Calendar className="w-4 h-4" /> Request an Appointment
             </Link>
           </div>
