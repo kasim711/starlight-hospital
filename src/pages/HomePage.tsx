@@ -56,16 +56,16 @@ export const HomePage: React.FC = () => {
       <section 
         ref={heroRef} 
         className="bg-parallax relative min-h-[70vh] lg:min-h-[75vh] flex items-center bg-cover bg-center"
-        style={{ backgroundImage: `url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&q=80&w=1920')` }}
+        style={{ backgroundImage: `url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1920')` }}
       >
-        {/* High-Contrast Dark Navy Overlay */}
-        <div className="absolute inset-0 bg-navy-950/85 sm:bg-gradient-to-r sm:from-navy-950/95 sm:via-navy-950/90 sm:to-navy-950/75"></div>
+        {/* Subtle Gradient Overlay — Keeps image fully visible while text is high contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/80 via-navy-950/50 to-transparent"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-28 w-full">
           <div className="max-w-2xl space-y-6">
             
-            {/* High-Contrast Pill Badge */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-navy-900/90 border border-amber-400/50 text-amber-300 text-xs font-bold uppercase tracking-wider shadow-md">
+            {/* Pill Badge */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-navy-950/80 border border-amber-400/50 text-amber-300 text-xs font-bold uppercase tracking-wider backdrop-blur-md shadow-md">
               <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
               STARLIGHT HOSPITAL • DEO MEDICE
             </div>
@@ -76,7 +76,7 @@ export const HomePage: React.FC = () => {
             </h1>
             
             {/* Subtitle */}
-            <p className="text-slate-100 text-base sm:text-lg font-medium leading-relaxed max-w-xl drop-shadow-sm">
+            <p className="text-slate-100 text-base sm:text-lg font-medium leading-relaxed max-w-xl drop-shadow-md">
               Accessible healthcare services for individuals and families in Jajo, Ikorodu and surrounding communities.
             </p>
 
@@ -85,13 +85,13 @@ export const HomePage: React.FC = () => {
               <Link to="/appointment" className="btn-teal text-sm py-3 px-6 shadow-md font-semibold">
                 <Calendar className="w-4 h-4" /> Request an Appointment
               </Link>
-              <a href="tel:08053587646" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-navy-900/90 border border-white/30 text-white font-semibold text-sm hover:bg-navy-800 transition-all shadow-md">
+              <a href="tel:08053587646" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-navy-950/80 border border-white/30 text-white font-semibold text-sm hover:bg-navy-900 transition-all backdrop-blur-md shadow-md">
                 <Phone className="w-4 h-4 text-amber-400" /> Call 08053587646
               </a>
             </div>
 
             {/* Contact Line */}
-            <div className="flex items-center gap-4 text-xs text-slate-200 pt-2 border-t border-white/20 max-w-lg font-medium">
+            <div className="flex items-center gap-4 text-xs text-slate-200 pt-2 border-t border-white/25 max-w-lg font-medium">
               <span className="font-semibold text-amber-300">Secondary Line:</span>
               <a href="tel:07079333090" className="text-white hover:text-amber-300 transition-colors font-bold">07079333090</a>
               <span>•</span>
@@ -100,7 +100,7 @@ export const HomePage: React.FC = () => {
 
           </div>
 
-          {/* High-Contrast Quick Feature Highlight Bar */}
+          {/* Quick Feature Highlight Bar */}
           <div className="mt-12 pt-8 border-t border-white/20 grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
               { title: 'General Medical', desc: 'Outpatient consultations' },
@@ -108,7 +108,7 @@ export const HomePage: React.FC = () => {
               { title: 'Paediatrics Care', desc: 'Healthcare for children' },
               { title: 'Laboratory & Diagnostics', desc: 'Clinical lab testing' }
             ].map((feat, i) => (
-              <div key={i} className="bg-navy-900/90 backdrop-blur-md p-4 rounded-xl border border-white/25 text-white shadow-lg space-y-1">
+              <div key={i} className="bg-navy-950/75 backdrop-blur-md p-4 rounded-xl border border-white/25 text-white shadow-lg space-y-1">
                 <span className="text-xs font-bold text-amber-300 block tracking-wide">{feat.title}</span>
                 <span className="text-xs text-slate-100 block font-medium">{feat.desc}</span>
               </div>
